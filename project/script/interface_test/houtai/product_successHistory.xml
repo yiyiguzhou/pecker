@@ -1,0 +1,811 @@
+<?xml version="1.0" ?>
+<suite shelf="product_successHistory">
+	<url>
+		<url_name>product_successHistory</url_name>
+		<url_place>http://apisgame-test.qiyi.domain/pay/product/successHistory?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="不上传/不填 必填参数source">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="不上传/不填 必填参数sign">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<source>1</source>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="不上传/不填 必填参数user_id">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="不上传/不填 必填参数start_pay_time">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="不上传/不填 必填参数end_pay_time">
+		<input_parameter>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="不上传/不填 必填参数end_pay_time">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="source填写错误(非int型)">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<source>4.4</source>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="source填写错误(范围之外)">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<source>144</source>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="sign填写错误">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>aaa</sign>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<source>1</source>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="查询开始时间没有精确到秒">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>0d132f1637d78ad17481aa7e92fc6524</sign>
+			<start_pay_time>2017-12-01</start_pay_time>
+			<source>1</source>
+			<timestamp>1517465508</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="查询结束时间没有精确到秒">
+		<input_parameter>
+			<end_pay_time>2018-02-01</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>2c4739ee87816ff14cb97039156e433c</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>1517465508</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="查询开始时间和查询结束时间间隔大于186天">
+		<input_parameter>
+			<end_pay_time>2018-06-07 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="查询开始时间和查询结束时间间隔等于186天">
+		<input_parameter>
+			<end_pay_time>2018-06-05 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="查询开始日期晚于结束日期">
+		<input_parameter>
+			<end_pay_time>2018-01-21 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2018-02-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="查询开始日期为闰年份2017-02-30 19:20:00">
+		<input_parameter>
+			<end_pay_time>2018-01-21 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-02-30 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="查询结束日期为闰年份2017-02-30 19:20:00">
+		<input_parameter>
+			<end_pay_time>2017-02-30 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-01-30 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="只上传必填参数">
+		<input_parameter>
+			<end_pay_time>2018-03-10 23:59:59</end_pay_time>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2018-03-09 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="上传商品类型值错误  枚举值之外">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>movie</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="19" name="查询的product_type为game">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<order_id>1801191346000024422</order_id>
+					<product_type>game</product_type>
+					<product_id>7049</product_id>
+				</list>
+				<list>
+					<order_id>1801171640000015122</order_id>
+					<product_type>game</product_type>
+					<product_id>6608</product_id>
+				</list>
+				<list>
+					<order_id>1801171519000014222</order_id>
+					<product_type>game</product_type>
+					<product_id>6597</product_id>
+				</list>
+				<list>
+					<order_id>1801171513000014122</order_id>
+					<product_type>game</product_type>
+					<product_id>5774</product_id>
+				</list>
+				<list>
+					<order_id>1712201238000075322</order_id>
+					<product_type>game</product_type>
+					<product_id>10085</product_id>
+				</list>
+				<list>
+					<order_id>1712181416000073322</order_id>
+					<product_type>game</product_type>
+					<product_id>6554</product_id>
+				</list>
+				<list>
+					<order_id>1712181414000073222</order_id>
+					<product_type>game</product_type>
+					<product_id>6554</product_id>
+				</list>
+				<list>
+					<order_id>1712181404000073122</order_id>
+					<product_type>game</product_type>
+					<product_id>6554</product_id>
+				</list>
+				<list>
+					<order_id>1712181400000073022</order_id>
+					<product_type>game</product_type>
+					<product_id>6554</product_id>
+				</list>
+				<list>
+					<order_id>1712181358000072922</order_id>
+					<product_type>game</product_type>
+					<product_id>6554</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="20" name="查询的product_type为rented_game">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>rented_game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>19</total>
+				<list>
+					<order_id>1801191002000022722</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6877</product_id>
+				</list>
+				<list>
+					<order_id>1801181949000021222</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6602</product_id>
+				</list>
+				<list>
+					<order_id>1801181908000020822</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>7049</product_id>
+				</list>
+				<list>
+					<order_id>1801181509000018022</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6673</product_id>
+				</list>
+				<list>
+					<order_id>1801172020000016222</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6599</product_id>
+				</list>
+				<list>
+					<order_id>1801171636000015022</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6608</product_id>
+				</list>
+				<list>
+					<order_id>1801171614000014922</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6676</product_id>
+				</list>
+				<list>
+					<order_id>1801171546000014422</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>5934</product_id>
+				</list>
+				<list>
+					<order_id>1801171542000014322</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6590</product_id>
+				</list>
+				<list>
+					<order_id>1712211819000088922</order_id>
+					<product_type>rented_game</product_type>
+					<product_id>6596</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="21" name="查询的product_type为vip">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>vip</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>15</total>
+				<list>
+					<order_id>1801191347000024522</order_id>
+					<product_type>vip</product_type>
+					<product_id>34</product_id>
+				</list>
+				<list>
+					<order_id>1801181520000018322</order_id>
+					<product_type>vip</product_type>
+					<product_id>34</product_id>
+				</list>
+				<list>
+					<order_id>1801181454000017622</order_id>
+					<product_type>vip</product_type>
+					<product_id>40</product_id>
+				</list>
+				<list>
+					<order_id>1801181449000017322</order_id>
+					<product_type>vip</product_type>
+					<product_id>5</product_id>
+				</list>
+				<list>
+					<order_id>1801171645000015322</order_id>
+					<product_type>vip</product_type>
+					<product_id>38</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="22" name="查询的product_type为qibei">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>5</total>
+				<list>
+					<order_id>1801181944000021122</order_id>
+					<product_type>qibei</product_type>
+					<product_id>1</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="23" name="上传product_type为多个值用英文半角逗号隔开">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game,qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>20</total>
+				<list>
+					<order_id>1801191346000024422</order_id>
+					<product_type>game</product_type>
+					<product_id>7049</product_id>
+				</list>
+				<list>
+					<order_id>1801181944000021122</order_id>
+					<product_type>qibei</product_type>
+					<product_id>1</product_id>
+				</list>
+				<list>
+					<order_id>1712201238000075322</order_id>
+					<product_type>game</product_type>
+					<product_id>10085</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="24" name="上传product_type为多个值用英文全角逗号隔开">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game，qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="25" name="上传product_type为多个值用英文半角非逗号隔开">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game.qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="26" name="上传product_type为多个值用中文半角逗号隔开">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game,qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>20</total>
+				<list>
+					<order_id>1801191346000024422</order_id>
+					<product_type>game</product_type>
+					<product_id>7049</product_id>
+				</list>
+				<list>
+					<order_id>1712201238000075322</order_id>
+					<product_type>game</product_type>
+					<product_id>10085</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="27" name="不上传page参数">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page_size>10</page_size>
+			<product_type>qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>5</total>
+				<list>
+					<order_id>1801181944000021122</order_id>
+					<product_type>qibei</product_type>
+					<product_id>1</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="28" name="上传page为1/2/3（正整数）">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>5</total>
+				<list>
+					<order_id>1801181944000021122</order_id>
+					<product_type>qibei</product_type>
+					<product_id>1</product_id>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="29" name="上传page为错误格式">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1.1</page>
+			<page_size>10</page_size>
+			<product_type>qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="30" name="上传page大于最大页面">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>2</page>
+			<page_size>10</page_size>
+			<product_type>qibei</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>5</total>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="31" name="不上传page_size参数">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<product_type>vip</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-09-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>27</total>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="32" name="上传page_size参数为正确数值10/20/25(正整数)">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>vip</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-09-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>27</total>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="33" name="上传page_size为错误格式">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>2.5</page_size>
+			<product_type>vip</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-09-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="34" name="上传不存在的用户id">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>999999999</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>0</total>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="35" name="相同参数重复请求超过3次">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>1520768528</timestamp>
+			<user_id>999999999</user_id>
+		</input_parameter>
+		<expect>
+			<code>10004</code>
+		</expect>
+	</testcase>
+	<testcase id="36" name="所有参数都正确填写">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>15</total>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="37" name="外网访问">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<total>15</total>
+			</data>
+		</expect>
+	</testcase>
+	<!--<testcase id="38" name="product_type参数错误（sql注入）">
+		<input_parameter>
+			<end_pay_time>2018-02-01 23:59:59</end_pay_time>
+			<page>1</page>
+			<page_size>10</page_size>
+			<product_type>game or11'</product_type>
+			<sign>%{sign}</sign>
+			<source>1</source>
+			<start_pay_time>2017-12-01 23:59:59</start_pay_time>
+			<timestamp>%{timestamp}</timestamp>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>-->
+</suite>

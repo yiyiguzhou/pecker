@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <game_name>斗地主</game_name>
+        <version></version>
+        <sizeof></sizeof>
+        <publish_date></publish_date>
+        <developer></developer>
+        <platform> </platform>
+		<game_title>斗地主Native</game_title>
+		<game_sub_title></game_sub_title>
+    </paramater>
+</data>

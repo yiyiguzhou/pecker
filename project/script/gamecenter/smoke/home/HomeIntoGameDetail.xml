@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <game_name>斗地主</game_name>
+        <version></version>
+        <pgk_size></pgk_size>
+        <publish_date></publish_date>
+        <developer></developer>
+        <sys_require></sys_require>
+    </paramater>
+</data>

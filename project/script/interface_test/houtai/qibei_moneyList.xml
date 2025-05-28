@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<suite shelf="qibei_moneyList">
+	<url>
+		<url_name>qibei_moneyList</url_name>
+		<url_place>https://apisgame.iqiyi.com/pay/qibei/moneyList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="必填参数source不填">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必填参数timestamp不填">
+		<input_parameter>
+			<source>2</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="必填参数sign不填">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<source>2</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="必填参数source错误">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<source>100</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="必填参数sign错误">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<source>2</source>
+			<sign>xx</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="所有参数填写正确">
+		<input_parameter>
+			<timestamp>1513841902</timestamp>
+			<source>2</source>
+			<sign>f1f5c3271b832aef96c1c5c22cc9c3f7</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>[1,10,11,20,200,333,500,800,9999]</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="内网访问">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<source>2</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>[1,10,11,20,200,333,500,800,9999]</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="外网访问">
+		<input_parameter>
+			<timestamp>%{timestamp}</timestamp>
+			<source>2</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>[1,10,11,20,200,333,500,800,9999]</list>
+			</data>
+		</expect>
+	</testcase>
+</suite>

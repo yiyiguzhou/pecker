@@ -1,0 +1,148 @@
+<?xml version="1.0" ?>
+<suite shelf="GameList_cateHot">
+	<url>
+		<url_name>GameList_cateHot</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/inner/GameList/cateHot?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="按游戏分类查询(category枚举值：1-11的整数)">
+		<input_parameter>
+			<source>1</source>
+			<category>1</category>
+			<sign>070d3c7679a41eb7c64418f75c1ff9af</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">1</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="按游戏终端查询(terminal)">
+		<input_parameter>
+			<source>1</source>
+			<category>1</category>
+			<terminal>1</terminal>
+			<sign>d38b526f24b2ca7d81baf7d39600e2c3</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="查询需要鉴权的游戏下载量排行(need_auth=1)">
+		<input_parameter>
+			<source>1</source>
+			<category>1</category>
+			<need_auth>1</need_auth>
+			<sign>3228e6eb62802b72bd6e640e73a8d4ce</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<need_auth test_type="all">1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="查询不需要鉴权的游戏下载量排行(need_auth=0)">
+		<input_parameter>
+			<source>1</source>
+			<category>1</category>
+			<need_auth>0</need_auth>
+			<sign>f414b5f3694cabe83177822638a079a2</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<need_auth test_type="all">0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="默认参数(page和page_size)都不传">
+		<input_parameter>
+			<source>1</source>
+			<category>2</category>
+			<sign>4f8793d6d3a863f9fe4efa8f2da8d760</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">2</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="设置页码(page)和页面容量(page_size)">
+		<input_parameter>
+			<source>1</source>
+			<category>2</category>
+			<page>1</page>
+			<limit>10</limit>
+			<sign>cb9015cca3984b2afcc4323a23aec286</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">2</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="必填参数source无效(source枚举值:1-14整数)">
+		<input_parameter>
+			<source>200</source>
+			<category>1</category>
+			<sign>ac11eee2c15840cb110214ad4809820d</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="必填参数source不传">
+		<input_parameter>
+			<category>1</category>
+			<sign>070d3c7679a41eb7c64418f75c1ff9af</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="必填参数category无效(category枚举值：1-11的整数)">
+		<input_parameter>
+			<source>1</source>
+			<category>18</category>
+			<sign>f32413c727af912fd9994638f41d54d9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="必填参数category不传">
+		<input_parameter>
+			<source>1</source>
+			<sign>434b84b05d69dd52bdbeccdef58fb4c6</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="必填参数sign错误">
+		<input_parameter>
+			<source>1</source>
+			<category>xxx</category>
+			<sign>xx</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="必填参数sign不传  ">
+		<input_parameter>
+			<source>1</source>
+			<category>xxx</category>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+</suite>

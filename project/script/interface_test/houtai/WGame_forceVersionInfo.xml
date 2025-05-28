@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<suite shelf="WGame_forceVersionInfo">
+	<url>
+		<url_name>WGame_forceVersionInfo</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/web/WGame/forceVersionInfo?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="按游戏id查询页游微端强制更新版本信息">
+		<input_parameter>
+			<game_id>7166</game_id>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<version>xx</version>
+				<download_url>http://data.video.iqiyi.com/cdn/gamebox/20171220/1f0232422cd4dda49c40ca8210b02a1a.exe</download_url>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="按游戏id查询页游微端强制更新版本信息，该游戏没有强制更新版本">
+		<input_parameter>
+			<game_id>22851</game_id>
+			<source>1</source>
+			<sign>4eff69fc03477d39344857e1e8af1777</sign>
+		</input_parameter>
+		<expect>
+			<code>50105</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="游戏id不存在">
+		<input_parameter>
+			<game_id>12345678</game_id>
+			<source>1</source>
+			<sign>c01c3e25e7a79e58b277f1a8f9486785</sign>
+		</input_parameter>
+		<expect>
+			<code>50105</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="入参游戏id缺失，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<sign>7fff9ab29d5aa2d8bd0989765d6abe7f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<source>28</source>
+			<sign>7fff9ab29d5aa2d8bd0989765d6abe8f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<source>1</source>
+			<sign>7fff9ab29d5aa2d8bd0989765d6abe</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

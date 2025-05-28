@@ -1,0 +1,309 @@
+<?xml version="1.0" ?>
+<suite shelf="UGameList_listByGameOnlineDate">
+	<url>
+		<url_name>UGameList_listByGameOnlineDate</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/unified/UGameList/listByGameOnlineDate?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="查询所有游戏(默认按online_date 降序输出游戏信息, 上线的时间小于当前服务器的时间)">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>online_date</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="查询所有游戏，默认按game_id 降序输出游戏列表">
+		<input_parameter>
+			<order_by>game_id</order_by>
+			<source>1</source>
+			<sign>20be71fd8598f565c151190e705a1ee1</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>game_id</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="查询所有安卓单机游戏列表">
+		<input_parameter>
+			<page>3</page>
+			<page_size>5</page_size>
+			<network>2</network>
+			<terminal>1</terminal>
+			<source>1</source>
+			<sign>d6cdb6cdfbc6d3640d5e28e1e9fae454</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<terminal test_type="all">1</terminal>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="查询所有PC_WEB网络游戏列表">
+		<input_parameter>
+			<page>1</page>
+			<page_size>5</page_size>
+			<network>1</network>
+			<terminal>4</terminal>
+			<source>1</source>
+			<sign>3e32d7887cb190de855296540568eb5c</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<network test_type="all">1</network>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="查询发行区域为大陆的所有游戏列表">
+		<input_parameter>
+			<publish_area>1</publish_area>
+			<source>1</source>
+			<sign>6dd7d83fdbbb063f387f7c79c8f91e1c</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<publish_area test_type="all">1</publish_area>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="查询支付状态开启的游戏的所有游戏列表">
+		<input_parameter>
+			<pay_status>1</pay_status>
+			<source>1</source>
+			<sign>9cab7ac1695f58391f2e7f4ebdb51faf</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<pay_status test_type="all">1</pay_status>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="查询已上线的所有游戏">
+		<input_parameter>
+			<online_status>1</online_status>
+			<source>1</source>
+			<sign>0bdd48f31c91632d5389251fae81f0de</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<online_status test_type="all">1</online_status>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="模糊搜索(name只能是数字，字母，中文字符的组合)">
+		<input_parameter>
+			<name>a</name>
+			<source>1</source>
+			<sign>e033d86f1f070448e9c0b078431acd0d</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<game_name test_type="all">%a%</game_name>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="模糊搜索输入特殊字符，接口返回错误响应码">
+		<input_parameter>
+			<name>--</name>
+			<source>1</source>
+			<sign>44de434eb502c28e2b4657512c76190b</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数page*page_size等于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>100</page_size>
+			<source>1</source>
+			<sign>a889b690f1824870c70ecd6acac38735</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<current test_type="all">1</current>
+				<page_size test_type="all">100</page_size>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数page*page_size大于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>101</page_size>
+			<source>1</source>
+			<sign>b79db20658b6f8277687ea5f35b82b81</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="请求参数page=0，接口返回错误响应码">
+		<input_parameter>
+			<page>0</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>e943350054cc8b825ea8b2d05723e9f3</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="请求参数page_size=0，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>0</page_size>
+			<source>1</source>
+			<sign>6dcd99491feee4a147fc6b43247a9d3f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="请求参数page非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>a</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>0fa22bb637f6739016c1175a28fe4468</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="请求参数page_size非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>a</page_size>
+			<source>1</source>
+			<sign>50489b90f71058f79b82030d545e2e62</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="请求参数network传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<network>3</network>
+			<source>1</source>
+			<sign>af51f0978ea38a70cadc9ab3b9b23f7f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="请求参数terminal传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<terminal>9</terminal>
+			<source>1</source>
+			<sign>00f01a155fa714f865e88615919fa7f8</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="19" name="请求参数publish_area传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<publish_area>6</publish_area>
+			<source>1</source>
+			<sign>b80f05e0e9e2566ff87feb18070b596c</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="20" name="请求参数pay_status传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<pay_status>4</pay_status>
+			<source>1</source>
+			<sign>a65168b32e8d8fece1680424b72a8658</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="请求参数online_status传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<pay_status>4</pay_status>
+			<source>1</source>
+			<sign>a65168b32e8d8fece1680424b72a8658</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="22" name="请求参数order_by传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<order_by>game</order_by>
+			<source>1</source>
+			<sign>3f1741761f58597dccafd870b35dd390</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="23" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<source>28</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="24" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="25" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

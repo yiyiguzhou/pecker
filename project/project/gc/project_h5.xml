@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="3">
+	<!--<testcase loop="1">script/sdk/TestSdk1</testcase>-->
+	<!--<testcase loop="2">script/sdk/TestSdk2</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/demo/TestGameCenter1</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/demo/TestGameCenter2</testcase>-->
+	<!--<testcase loop="10">script/gamecenter/demo/TestGameCenterError1</testcase>-->
+	<testcase loop="4">script/gamecenter/demo/PositionPressureSmallGame</testcase>
+	<testcase loop="20">script/gamecenter/demo/PositionPressure</testcase>
+</project>

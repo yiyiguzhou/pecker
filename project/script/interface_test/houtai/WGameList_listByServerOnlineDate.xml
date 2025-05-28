@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<suite shelf="WGameList_listByServerOnlineDate">
+	<url>
+		<url_name>WGameList_listByServerOnlineDate</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/web/WGameList/listByServerOnlineDate?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="网页游戏查列表查询,按开服时间降序（游戏上线，服务器在上线状态并且上线时间小于当前时间）">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>online_date</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="设置页码和页面容量">
+		<input_parameter>
+			<page>2</page>
+			<page_size>3</page_size>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<current>2</current>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="page*page_size等于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>100</page_size>
+			<source>1</source>
+			<sign>a889b690f1824870c70ecd6acac38735</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page_size>100</page_size>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="page*page_size大于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>101</page_size>
+			<source>1</source>
+			<sign>b79db20658b6f8277687ea5f35b82b81</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="请求参数page=0，接口返回错误响应码">
+		<input_parameter>
+			<page>0</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>e943350054cc8b825ea8b2d05723e9f3</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数page_size=0，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>0</page_size>
+			<source>1</source>
+			<sign>6dcd99491feee4a147fc6b43247a9d3f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数page非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>a</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>0fa22bb637f6739016c1175a28fe4468</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数page_size非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>a</page_size>
+			<source>1</source>
+			<sign>50489b90f71058f79b82030d545e2e62</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<source>28</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

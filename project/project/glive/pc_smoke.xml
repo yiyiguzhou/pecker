@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="1">
+	<!--<testcase loop="1">script/glive/pc/home/PasswordLogin</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/home/HomeClickLogo</testcase>-->
+    <testcase loop="1">script/glive/pc/home/HomeSideListSwitch</testcase>
+    <!--<testcase loop="1">script/glive/pc/home/HomeIntoSecondClassify</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/ListPageIntoRoom</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/HomeSearch</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/HomeMyFollowView</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/HomeMyFollowIntoLiteRoom</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/HomeHistoryView</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/home/HomeHistoryIntoLiteRoom</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/rank/RankUI</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/home/HomeUserLogoutCheck</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/home/HomeUserChargeUI</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/home/HomeIntoUserInfo</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/user/UserFollowIntoLiteRoom</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/user/UserHistoryIntoLiteRoom</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/user/UserPackageGiftUI</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/user/UserPackageSpecialGiftUI</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/room/RoomCloseRecharge</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/room/RoomSendBagGift</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/room/RoomSendBagBatchGift</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/room/RoomChargeUI</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomFollow</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomChatSendEmoji</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomChatSendMsg</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomChatClean</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomSendGift</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomSendBatchGift</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomChatBan</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomChatBanSendGift</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomNotLive</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomSendGoldGift</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomLottery</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/room/RoomOtherSendGift</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/anchor/AnchorCreateWordGiftLottery</testcase>-->
+
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerPausePlay</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerReload</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerFullPage</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerFullScreen</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerDanmuSwitch</testcase>-->
+    <!--<testcase loop="1">script/glive/pc/player/RoomPlayerVoice</testcase>-->
+	<!--<testcase loop="1">script/glive/pc/player/RoomPlayerDanmu</testcase>-->
+
+</project>

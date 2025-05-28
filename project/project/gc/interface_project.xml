@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="1">
+	<!--<testcase loop="1">script/interface_test/houtai/AGameList_topList</testcase>
+	<testcase loop="1">script/interface_test/houtai/AGameList_weekHot</testcase>
+	<testcase loop="1">script/interface_test/houtai/APackage_findGame</testcase>
+	<testcase loop="1">script/interface_test/houtai/APackage_updateDownloadUrl</testcase>
+	<testcase loop="1">script/interface_test/houtai/card_cardList</testcase>
+	<testcase loop="1">script/interface_test/houtai/card_detail</testcase>
+	<testcase loop="1">script/interface_test/houtai/card_info</testcase>
+	<testcase loop="1">script/interface_test/houtai/card_lists</testcase>
+	&lt;!&ndash;card can't be received twice&ndash;&gt;
+	<testcase loop="1">script/interface_test/houtai/card_reward</testcase>
+	&lt;!&ndash;sign&ndash;&gt;
+	<testcase loop="1">script/interface_test/houtai/card_rewardForNative</testcase>
+	<testcase loop="1">script/interface_test/houtai/game_gameinfouser</testcase>
+	<testcase loop="1">script/interface_test/houtai/game_gameList</testcase>
+	<testcase loop="1">script/interface_test/houtai/game_multiGameInfoForUser</testcase>
+	<testcase loop="1">script/interface_test/houtai/MGame_gameInfoUser</testcase>
+	<testcase loop="1">script/interface_test/houtai/MGame_gameInfoUserBatch</testcase>
+	<testcase loop="1">script/interface_test/houtai/MGameList_gameList</testcase>
+	<testcase loop="1">script/interface_test/houtai/MixedGame_androidAndH5TodayOnline</testcase>
+	<testcase loop="1">script/interface_test/houtai/MServer_serverInfo</testcase>
+	<testcase loop="1">script/interface_test/houtai/pay_type</testcase>
+	<testcase loop="1">script/interface_test/houtai/product_buy</testcase>
+	<testcase loop="1">script/interface_test/houtai/product_cancelOrder</testcase>
+	<testcase loop="1">script/interface_test/houtai/product_ordersInfo</testcase>
+	<testcase loop="1">script/interface_test/houtai/product_successHistory</testcase>
+	&lt;!&ndash;There are some problems about the interface.&ndash;&gt;
+	<testcase loop="1">script/interface_test/houtai/qibei_freeze</testcase>
+	<testcase loop="1">script/interface_test/houtai/qibei_consume</testcase>
+	<testcase loop="1">script/interface_test/houtai/qibei_freezeConsume</testcase>
+	<testcase loop="1">script/interface_test/houtai/qibei_log</testcase>
+	<testcase loop="1">script/interface_test/houtai/qibei_moneyList</testcase>
+	<testcase loop="1">script/interface_test/houtai/qibei_unfreeze</testcase>
+	<testcase loop="1">script/interface_test/houtai/qudao_getListById</testcase>
+	<testcase loop="1">script/interface_test/houtai/QudaoTemplate_detail</testcase>
+	<testcase loop="1">script/interface_test/houtai/QudaoTemplate_lists</testcase>
+	<testcase loop="1">script/interface_test/houtai/UGame_cateGameCount</testcase>
+	<testcase loop="1">script/interface_test/houtai/UGame_gameOpGroup</testcase>
+	<testcase loop="1">script/interface_test/houtai/UGame_getForumIdByGameId</testcase>
+	<testcase loop="1">script/interface_test/houtai/UGame_qudaoRelations</testcase>
+	<testcase loop="1">script/interface_test/houtai/user_getUserBoughtGame</testcase>
+	&lt;!&ndash;Need an auth_cookie.&ndash;&gt;
+	<testcase loop="1">script/interface_test/houtai/user_userInfo</testcase>
+	<testcase loop="1">script/interface_test/houtai/user_userPlayedGame</testcase>
+	&lt;!&ndash;Need a game with forced updating version.&ndash;&gt;
+	<testcase loop="1">script/interface_test/houtai/WGame_forceVersionInfo</testcase>
+	<testcase loop="1">script/interface_test/houtai/WServer_gameLatestServer</testcase>
+	<testcase loop="1">script/interface_test/houtai/WServer_gameLatestServerWithGameInfo</testcase>
+	<testcase loop="1">script/interface_test/houtai/WServer_gameServerList</testcase>
+	<testcase loop="1">script/interface_test/houtai/GameList_cateHot</testcase>
+	<testcase loop="1">script/interface_test/houtai/MGameList_listMobileOrderGrade</testcase>
+	<testcase loop="1">script/interface_test/houtai/WGameList_listByServerOnlineDate</testcase>
+	<testcase loop="1">script/interface_test/houtai/UGameList_listByGameOnlineDate</testcase>
+	<testcase loop="1">script/interface_test/houtai/gamecenter_cate</testcase>
+    <testcase loop="1">script/interface_test/houtai/WServer_ServerInfo</testcase>
+-->
+
+	<testcase loop="1">script/interface_test/testUI/UGameList_listByGameOnlineDate</testcase>
+
+
+	<!--<testcase loop="1">script/interface_test/houtai/gamecenter_cate</testcase>
+
+	<testcase loop="1">script/interface_test/houtai/user_storeBoughtProduct</testcase>
+	<testcase loop="1">script/interface_test/houtai/topics_index</testcase>
+	<testcase loop="1">script/interface_test/houtai/qudao_getList</testcase>
+
+	SQL problem
+	<testcase loop="1">script/interface_test/houtai/Game_topList</testcase>
+	<testcase loop="1">script/interface_test/houtai/center_catehot</testcase>
+	<testcase loop="1">script/interface_test/houtai/WServerList_latestOpenServerInfoWithGameInfoList</testcase>-->
+</project>

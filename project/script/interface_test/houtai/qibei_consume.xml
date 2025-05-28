@@ -1,0 +1,159 @@
+<?xml version="1.0" ?>
+<suite shelf="qibei_consume">
+	<url>
+		<url_name>qibei_consume</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/qibei/consume?</url_place>
+		<response_method>POST_body</response_method>
+	</url>
+	<testcase id="1" name="内网访问">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="外网访问">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="source不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="source格式错误">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="source格式正确，不在范围内">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="sign不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="sign错误">
+		<input_parameter/>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="user_id不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="user_id格式不正确">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="user_id不存在">
+		<input_parameter/>
+		<expect>
+			<code>20001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="number不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="number格式错误">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="number&lt;=0">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="number&gt;0">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="channel不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="channel格式错误">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="channel≠4、5">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="channel_detail不传、为空">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="19" name="channel_detail格式错误">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="20" name="channel=4、channel_detail为租用的订单id">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="channel=5
+channel_detail为买断的订单id">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="22" name="desc不上传、为空">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="23" name="参数都正确上传">
+		<input_parameter/>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="24" name="消耗奇贝大于用户的剩余奇贝量">
+		<input_parameter/>
+		<expect>
+			<code>20010</code>
+		</expect>
+	</testcase>
+	<testcase id="25" name="改动数据库，使数据库写入出错">
+		<input_parameter/>
+		<expect>
+			<code>600</code>
+		</expect>
+	</testcase>
+</suite>

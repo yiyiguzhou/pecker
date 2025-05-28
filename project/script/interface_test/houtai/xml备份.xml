@@ -1,0 +1,184 @@
+<?xml version="1.0" ?>
+<suite shelf="center_catehot">
+	<url>
+		<url_name>center_catehot</url_name>
+		<url_place>http://production.game.qiyi.domain/api/center/catehot?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="fr为空或不传">
+		<input_parameter/>
+		<expect>
+			<status>2003</status>
+		</expect>
+	</testcase>
+	<testcase id="2" name="game_id和category均未传">
+		<input_parameter>
+			<fr>6</fr>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="3" name="category传入不存在的分类ID">
+		<input_parameter>
+			<fr>6</fr>
+			<category>155555</category>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="4" name="传入必填参数fr和game_id，返回获取该游戏相同category、terminal类型的游戏排行">
+		<input_parameter>
+			<fr>6</fr>
+			<game_id>7219</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="5" name="传入必填参数fr和category，返回该category下的游戏排行">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<category test_type="all">1</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="传入limit和page验证">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<limit test_type="all">1</limit>
+				<page test_type="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="传入terminal为不存在的终端ID">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>9</terminal>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="8" name="传入terminal，值为{1,2,3,4，5，6}的单个值">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="传入terminal，值为{1,2,3,4，5，6}中的多个">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1,2,3</terminal>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<terminal test_type="all">$:1,2,3</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="传入need_auth非{0，1}">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+			<need_auth>2</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="11" name="传入need_auth=0，返回不需要鉴权的游戏">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="传入need_auth=1，返回需要鉴权的游戏">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="13" name="传入所有参数，返回正确结果">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="14" name="根据fr=16（来源为游戏中心）过滤游戏，过滤game_info字段表中isshield_gamecenter=1的游戏不在接口返回">
+		<input_parameter>
+			<fr>16</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+			<terminal>1</terminal>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">1</need_auth>
+				<isshield_gamecenter test_type="all">!1</isshield_gamecenter>
+			</data>
+		</expect>
+	</testcase>
+</suite>

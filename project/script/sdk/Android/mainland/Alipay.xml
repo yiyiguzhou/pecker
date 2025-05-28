@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <num>1</num>
+        <account>13120674731</account>
+        <password>13120674731fang</password>
+        <select_pay>支付宝钱包</select_pay>
+        <pay_password>434579</pay_password>
+        <!--<title>完成</title>-->
+    </paramater>
+</data>

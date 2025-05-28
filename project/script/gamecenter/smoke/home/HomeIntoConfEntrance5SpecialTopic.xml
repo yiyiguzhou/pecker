@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <entrance_number>5</entrance_number>
+        <title></title>
+        <game_name></game_name>
+    </paramater>
+</data>

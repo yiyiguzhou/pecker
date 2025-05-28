@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <title>本周人气推荐</title>
+        <game_name>斗地主</game_name>
+        <game_information>游戏信息</game_information>
+        <prompt>安装成功</prompt>
+    </paramater>
+</data>

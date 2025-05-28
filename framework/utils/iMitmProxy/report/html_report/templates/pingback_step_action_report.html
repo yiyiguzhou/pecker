@@ -1,0 +1,16 @@
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+{% import "table_module.html" as T %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% include 'func.js' %}
+    <title>PingBack 用例步骤执行报告</title>
+</head>
+<body>
+    <div><h3 align="center">PingBack 用例执行报告</h3></div>
+    <div>{{T.pingback_step_action_table(result)}}</div>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<suite shelf="card_detail">
+	<url>
+		<url_name>card_detail</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/card/detail?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="缺少必填参source">
+		<input_parameter>
+			<id>5</id>
+			<sign>4ebf0ec30aeb5e8a1a13d36ce9e9d8f2</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="缺少必填参sign">
+		<input_parameter>
+			<id>5</id>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="缺少必填参id">
+		<input_parameter>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="source错误">
+		<input_parameter>
+			<id>5</id>
+			<sign>953ca137b3393f6629ed93c164936672</sign>
+			<source>100</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="sign错误">
+		<input_parameter>
+			<id>5</id>
+			<sign>xxx</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="id错误（不为int）">
+		<input_parameter>
+			<id>aaa</id>
+			<sign>a585edd27878a5ae9432c7390c7d117a</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="上传不存在的id">
+		<input_parameter>
+			<id>100</id>
+			<sign>fd713db63ba4a7678e85dcd4052afa04</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>30011</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="上传会员卡（不打折）">
+		<input_parameter>
+			<id>34</id>
+			<sign>f724a746288b6c9bba212329e594c2ea</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<is_discount test_type="all">0</is_discount>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="打折，在打折期内">
+		<input_parameter>
+			<id>6</id>
+			<sign>%{sign}</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<is_discount test_type="all">1</is_discount>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="打折，不在打折期内">
+		<input_parameter>
+			<id>16</id>
+			<sign>%{sign}</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<is_discount test_type="all">0</is_discount>
+			</data>
+		</expect>
+	</testcase>
+</suite>

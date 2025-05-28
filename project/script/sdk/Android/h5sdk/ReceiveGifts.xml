@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+         <is_tourist>False</is_tourist>
+        <is_sms>False</is_sms>
+        <game_text>龙城霸业H5</game_text>
+        <game_account>苍穹破</game_account>
+        <game_password>xu175444</game_password>
+         <phone_num>17612170004</phone_num>
+        <gift_text>新手礼包</gift_text>
+        <receive>领取</receive>
+        <receive_look>查看</receive_look>
+
+    </paramater>
+</data>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="1">
+	<testcase loop="1">script/sdk/Android/polymerizedsdk/Polymerized</testcase>
+</project>

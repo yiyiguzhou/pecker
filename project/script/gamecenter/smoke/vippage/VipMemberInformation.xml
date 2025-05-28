@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <account>17612170004</account>
+        <password>!feng122772</password>
+        <title>游戏会员</title>
+        <actionBar_title>我的游戏会员</actionBar_title>
+        <button_name>立即续费</button_name>
+        <qibei>奇贝余额: </qibei>
+        <qibei_value>20</qibei_value>
+        <qibei_recharge>奇贝充值</qibei_recharge>
+        <qibei_recording>奇贝记录</qibei_recording>
+    </paramater>
+</data>

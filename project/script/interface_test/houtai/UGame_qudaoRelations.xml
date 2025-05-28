@@ -1,0 +1,163 @@
+<?xml version="1.0" ?>
+<suite shelf="UGame_qudaoRelations">
+	<url>
+		<url_name>UGame_qudaoRelations</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/unified/UGame/qudaoRelations?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="source为空或未传">
+		<input_parameter>
+			<sign>e09e23bcb371e84d66bf04c055b0b070</sign>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source传入错误来源值">
+		<input_parameter>
+			<source>60</source>
+			<sign>57f409c37f8adee175efbe1ab3883e59</sign>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="sign未传或为空">
+		<input_parameter>
+			<source>6</source>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="sign错误">
+		<input_parameter>
+			<source>6</source>
+			<sign>xx</sign>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="game_id未传或为空">
+		<input_parameter>
+			<source>6</source>
+			<sign>336e16f10be8d4b9b25776663cde9c34</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="game_id格式错误">
+		<input_parameter>
+			<source>6</source>
+			<sign>ea92277c431c5b8eaa6b55a79b2a0b5a</sign>
+			<game_id>xx</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="is_active传入非{0,1}">
+		<input_parameter>
+			<source>6</source>
+			<sign>899f99f0a12f317e04eb2ce069c35359</sign>
+			<game_id>6957</game_id>
+			<is_active>2</is_active>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="接口请求成功返回数据包含所有字段">
+		<input_parameter>
+			<source>6</source>
+			<sign>ceee20f2db6e2cf848553131bf97ad88</sign>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>6957</game_id>
+				<terminal>4</terminal>
+				<pay_status>3</pay_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="is_active未传，返回所有状态">
+		<input_parameter>
+			<source>6</source>
+			<sign>ceee20f2db6e2cf848553131bf97ad88</sign>
+			<game_id>6957</game_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<relations>
+					<is_active test_type="all">$:0,1</is_active>
+				</relations>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="is_active=1，返回启用状态">
+		<input_parameter>
+			<source>6</source>
+			<sign>5024e21fab1f94f0cc55de50003bb885</sign>
+			<game_id>6957</game_id>
+			<is_active>1</is_active>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<relations>
+					<is_active test_type="all">1</is_active>
+				</relations>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="is_active=0，返回禁用状态">
+		<input_parameter>
+			<source>6</source>
+			<sign>9bdd03556c4e24f7e9da2a94fd5070e5</sign>
+			<game_id>6957</game_id>
+			<is_active>0</is_active>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<relations>
+					<is_active test_type="all">0</is_active>
+				</relations>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="传入game_id未配置渠道列表">
+		<input_parameter>
+			<source>6</source>
+			<sign>c52d28444b323563ab72314c2e64a8b2</sign>
+			<game_id>6974</game_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>6974</game_id>
+				<terminal>1</terminal>
+				<pay_status>3</pay_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="13" name="游戏不存在">
+		<input_parameter>
+			<source>6</source>
+			<sign>8f4fe96eb8c086f00f472c7c6a644fce</sign>
+			<game_id>10014</game_id>
+		</input_parameter>
+		<expect>
+			<code>50001</code>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,143 @@
+<?xml version="1.0" ?>
+<suite shelf="product_ordersInfo">
+	<url>
+		<url_name>product_ordersInfo</url_name>
+		<url_place>https://apisgame-test.iqiyi.com/pay/product/ordersInfo?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="order_ids必填参数不上传">
+		<input_parameter>
+			<timestamp>1517209371</timestamp>
+			<source>1</source>
+			<sign>bb42643f42b11ad492dd28e90cb1dd88</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="timestamp必填参数不上传">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<source>1</source>
+			<sign>36b84d36025833c7b0f2144b50c3c285</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="source必填参数不上传">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>1517209371</timestamp>
+			<sign>a955197dd6b2f650b436bbbc630e1447</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="sign必填参数不上传">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>1517209371</timestamp>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="order_ids必填参数不填写">
+		<input_parameter>
+			<timestamp>1517209371</timestamp>
+			<source>1</source>
+			<sign>bb42643f42b11ad492dd28e90cb1dd88</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="timestamp必填参数不填写">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<source>1</source>
+			<sign>36b84d36025833c7b0f2144b50c3c285</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="source必填参数不填写">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>1517209371</timestamp>
+			<sign>a955197dd6b2f650b436bbbc630e1447</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="sign必填参数不填写">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>1517209371</timestamp>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="签名错误">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>%{timestamp}</timestamp>
+			<source>1</source>
+			<sign>1d7c3bb3b0bb2d457f4f73df8dfcd91e</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="上传source不存在（范围之外）">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>%{timestamp}</timestamp>
+			<source>330</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="上传source错误（非int型）">
+		<input_parameter>
+			<order_ids>1801161729000012722</order_ids>
+			<timestamp>%{timestamp}</timestamp>
+			<source>3.3</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="上传订单不存在">
+		<input_parameter>
+			<order_ids>1801291422000056433</order_ids>
+			<timestamp>%{timestamp}</timestamp>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="订单id错误（非int型）">
+		<input_parameter>
+			<order_ids>180129142200005643.3</order_ids>
+			<timestamp>%{timestamp}</timestamp>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+</suite>

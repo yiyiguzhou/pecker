@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project sort="normal" loop="1">
+	<testcase loop="1">script/gamecenter/smoke/InstallAPK</testcase>
+	<testcase loop="1">script/gamecenter/smoke/home/EnterGameCenter</testcase>
+	<!--<testcase loop="1">script/gamecenter/smoke/home/TopSearch</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/DownloadManager</testcase>-->
+    <!--<testcase loop="1">script/gamecenter/smoke/home/FocusImageEnterGame</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/PokerSpecialTopic</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/ConfigurableEntry</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/HorizontalGameRecommendation</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/RecommendationGamedatail</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/RecommendationSpecialDetail</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/RecommendationH5Detail</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/HorizontalPictureSpecialDetail</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/HorizontalPictureH5detail</testcase>-->
+    <!--<testcase loop="1">script/gamecenter/smoke/home/GameList</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/GameDownload</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/SmallGameModule</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/home/MyGameModule</testcase>-->
+
+	<!--<testcase loop="1">script/gamecenter/smoke/vippage/EnterVipPage</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/vippage/MemberInformation</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/vippage/VipFocusImageEnterGame</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/vippage/BuyGameNotVip</testcase>-->
+	<!--<testcase loop="1">script/gamecenter/smoke/vippage/VipMemberInformation</testcase>-->
+
+</project>

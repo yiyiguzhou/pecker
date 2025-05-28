@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="1">
+	<!--<testcase loop="1">script/sdk/Android/mainland/Login</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/NoneLogin</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/IqiyiLogin</testcase>-->
+	<testcase loop="1">script/sdk/Android/mainland/AccountCorrect</testcase>
+	<!--<testcase loop="1">script/sdk/Android/mainland/MobileLogin</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/NoAccountCorrect</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/Tourist</testcase>-->
+	<testcase loop="3">script/sdk/Android/mainland/OtherLogin</testcase>
+	<testcase loop="3">script/sdk/Android/mainland/OtherLogin2</testcase>
+	<!--<testcase loop="1">script/sdk/Android/mainland/NoMobileAuthentication</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/MobileAuthentication</testcase>-->
+	<testcase loop="1">script/sdk/Android/mainland/Authentication</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/ThirdLoginsina</testcase>
+	<testcase loop="3">script/sdk/Android/mainland/QQLogin</testcase>
+	<testcase loop="3">script/sdk/Android/mainland/WetchatLogin</testcase>
+	<testcase loop="3">script/sdk/Android/mainland/MobilePasswordRecovery</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/EmailPasswordRecovery</testcase>
+	<testcase loop="3">script/sdk/Android/mainland/CustomerService</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/SidebarDisplay</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/DragSidebar</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/SidebarDisplayPopUps</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/MobilePhoneReturn</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/GameOut</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/GameOut2</testcase>
+    <testcase loop="3">script/sdk/Android/mainland/CancelPayment</testcase>
+
+    <!--<testcase loop="1">script/sdk/Android/mainland/Alipay</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/DiscountWechatPay</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/DiscountAliPay</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/CoinDeductionPay</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/VoucherDeductionPay</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/SilentUpdate</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/ForcedUpdate</testcase>-->
+    <!--<testcase loop="1">script/sdk/Android/mainland/WechatPay</testcase>-->
+
+
+	<!--<testcase loop="1">script/sdk/Android/mainland/GameMembershipCardPage</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/LearnGameMembershipCardPage</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/AliBuyVipGame</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/WechatBuyVipGame</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/mainland/CanclePayVipGame</testcase>-->
+
+	<!--<testcase loop="1">script/sdk/Android/mainland/ManualLogin</testcase>-->
+	<!--<testcase loop="1">script/sdk/Android/h5sdk/WechatLogin</testcase>-->
+</project>

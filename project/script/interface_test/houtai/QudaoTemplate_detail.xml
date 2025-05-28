@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<suite shelf="QudaoTemplate_detail">
+	<url>
+		<url_name>QudaoTemplate_detail</url_name>
+		<url_place>http://apisgame.qiyi.domain/pay/inner/QudaoTemplate/detail?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="source传入空或未传">
+		<input_parameter/>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source传入非来源内的值">
+		<input_parameter>
+			<source>31</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="id传入空或未传">
+		<input_parameter>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="id传入非整形">
+		<input_parameter>
+			<id>1a</id>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="id传入格式正确但不存在的值">
+		<input_parameter>
+			<id>1</id>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>60001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求成功">
+		<input_parameter>
+			<id>143</id>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>143</id>
+				<template_name>安卓单机1</template_name>
+				<items>
+					<id>380</id>
+					<header_id>143</header_id>
+					<qudao_id>30153</qudao_id>
+				</items>
+			</data>
+		</expect>
+	</testcase>
+</suite>

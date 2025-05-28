@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<suite shelf="game_gameinfouser">
+	<url>
+		<url_name>game_gameinfouser</url_name>
+		<url_place>http://production.game.qiyi.domain/api/game/gameinfouser?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="获取单个游戏信息接口_内网、外网访问该接口">
+		<input_parameter>
+			<game_id>7165</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="获取单个游戏信息接口_奇谱id和游戏id都不填">
+		<input_parameter/>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="3" name="获取单个游戏信息接口_奇谱id填写正确">
+		<input_parameter>
+			<qipu_id>233132120</qipu_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="获取单个游戏信息接口_游戏id填写正确">
+		<input_parameter>
+			<game_id>7165</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="获取单个游戏信息接口_奇谱id和游戏id填写正确">
+		<input_parameter>
+			<game_id>7165</game_id>
+			<qipu_id>233132120</qipu_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="获取单个游戏信息接口_游戏id和奇谱id不指向同一个游戏">
+		<input_parameter>
+			<game_id>7165</game_id>
+			<qipu_id>207704720</qipu_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="获取单个游戏信息接口_游戏截图比例验证">
+		<input_parameter>
+			<game_id>7165</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+				<screenshot_ratio>1</screenshot_ratio>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="获取单个游戏信息接口_游戏信息表未找到奇谱id">
+		<input_parameter>
+			<game_id>3</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="9" name="获取单个游戏信息接口_游戏信息表中未找到的游戏id">
+		<input_parameter>
+			<game_id>3</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="10" name="获取单个游戏信息接口_游戏只有游戏id/奇谱id，游戏不鉴权">
+		<input_parameter>
+			<game_id>11231</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>11231</game_id>
+				<need_auth>0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="获取单个游戏信息接口_游戏只有奇谱id/游戏id，游戏鉴权">
+		<input_parameter>
+			<game_id>7165</game_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<game_id>7165</game_id>
+				<qipu_id>233132120</qipu_id>
+				<need_auth>1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+</suite>

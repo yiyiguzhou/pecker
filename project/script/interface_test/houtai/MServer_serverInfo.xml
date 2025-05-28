@@ -1,0 +1,130 @@
+<?xml version="1.0" ?>
+<suite shelf="MServer_serverInfo">
+	<url>
+		<url_name>MServer_serverInfo</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/mixed/MServer/serverInfo?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="查询指定服务器信息">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+			<sign>5fb71b467b1e82ddee67128af1d3f3e7</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>3146096</id>
+				<name>96区</name>
+				<server_order>96</server_order>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必传参数game_id不存在，接口返回错误响应码：50101">
+		<input_parameter>
+			<game_id>12315</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+			<sign>80c8741de68bf9db74ad006f7651c928</sign>
+		</input_parameter>
+		<expect>
+			<code>50101</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="必传参数game_id非整型，接口返回错误响应码">
+		<input_parameter>
+			<game_id>a</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+			<sign>edce62a59ad3c1189e3ca9195e0ea6f5</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="必传参数game_id缺失，接口返回错误响应码">
+		<input_parameter>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+			<sign>e98150f3dc7b612537e28ce275f5f1ec</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="必传参数dev_server_id缺失,返回错误响应码：10001">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<source>1</source>
+			<sign>3b3f57b4ad5b3a56b9b4f90511e168f2</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="必传参数dev_server_id不存在,返回错误响应码：50101">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>50010</dev_server_id>
+			<source>1</source>
+			<sign>df7633fb64932f7216259d69744ce185</sign>
+		</input_parameter>
+		<expect>
+			<code>50101</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="必传参数dev_server_id非整型,返回错误响应码：10001">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>a</dev_server_id>
+			<source>1</source>
+			<sign>c097a14ecace5f4eb2410fee359ed444</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>288</dev_server_id>
+			<sign>5fb71b467b1e82ddee67128af1d3f3e7</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>28</source>
+			<sign>5fb71b467b1e82ddee67128af1d3f3e8</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<game_id>6393</game_id>
+			<dev_server_id>288</dev_server_id>
+			<source>1</source>
+			<sign>5fb71b467b1e82ddee67128af1d3f3e10</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,146 @@
+<?xml version="1.0" ?>
+<suite shelf="card_info">
+	<url>
+		<url_name>card_info</url_name>
+		<url_place>http://production.game.qiyi.domain/api/card/info?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="fr不上传">
+		<input_parameter>
+			<card_id>9693177</card_id>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>2003</status>
+		</expect>
+	</testcase>
+	<testcase id="2" name="fr为空">
+		<input_parameter>
+			<card_id>9693177</card_id>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>2003</status>
+		</expect>
+	</testcase>
+	<testcase id="3" name="fr参数不存在">
+		<input_parameter>
+			<fr>aa</fr>
+			<card_id>9693177</card_id>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="4" name="card_id不上传">
+		<input_parameter>
+			<fr>1</fr>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="5" name="card_id为空">
+		<input_parameter>
+			<fr>1</fr>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="6" name="card_id参数不存在">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>aa9693177</card_id>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="7" name="user_id不上传">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9693177</card_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<card_id>9693177</card_id>
+				<game_id>2756</game_id>
+				<card_name>盛世三国2新手卡</card_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="user_id为空">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9693177</card_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<card_id>9693177</card_id>
+				<game_id>2756</game_id>
+				<card_name>盛世三国2新手卡</card_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="user_id参数不存在">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9693177</card_id>
+			<user_id>aaaa</user_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="10" name="所填参数均正确">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9693177</card_id>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<card_id>9693177</card_id>
+				<game_id>2756</game_id>
+				<card_name>盛世三国2新手卡</card_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="游戏鉴权">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9698644</card_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<card_id>9698644</card_id>
+				<game_id>5710</game_id>
+				<card_name>鬼吹灯新手礼包</card_name>
+				<need_auth>0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="游戏不鉴权">
+		<input_parameter>
+			<fr>1</fr>
+			<card_id>9698617</card_id>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<card_id>9698617</card_id>
+				<game_id>5710</game_id>
+				<card_name>0808vip鬼吹灯安卓礼包3</card_name>
+			</data>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,254 @@
+<?xml version="1.0" ?>
+<suite shelf="game_gameList">
+	<url>
+		<url_name>game_gameList</url_name>
+		<url_place>http://production.game.qiyi.domain/api/game/gameList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="获取游戏列表接口_参数正确时内网访问此接口">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="2" name="获取游戏列表接口-选填参数不传">
+		<input_parameter>
+			<fr>1</fr>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="3" name="获取游戏列表接口-选填参数（填写单一值）">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="获取游戏列表接口-选填参数（填写多个值）">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1,2,3</terminal>
+			<online_status>1,2</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<terminal test_type="all">$:1,2,3</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="获取游戏列表-选填参数（填写多个值，未用英文逗号隔开-中文逗号）">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1，2，3</terminal>
+			<online_status>1，2</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="获取游戏列表接口-选填参数（选填参数取值超出范围）">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>30</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="7" name="获取游戏列表接口-所填参数均正确">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>2</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="8" name="获取游戏列表接口-传递必填参数加need_auth为0">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="获取游戏列表接口-传递必填参数加need_auth为1">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="获取游戏列表接口-传递参数加need_auth不传入">
+		<input_parameter>
+			<fr>1</fr>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="11" name="获取游戏列表接口-传递必填参数need_auth为非0,1的值">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>2</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>2</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="12" name="获取游戏列表接口-传递必填参数need_auth为非int型的值">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>2</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>2.2</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="13" name="per_page=all  获取所有游戏
+
+">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>all</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="14" name="page&amp;per_page  获取对应页面数据
+
+">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>1</terminal>
+			<online_status>1</online_status>
+			<category_id>1</category_id>
+			<page>1</page>
+			<per_page>20</per_page>
+			<publish_area>1</publish_area>
+			<pay_status>1</pay_status>
+			<op_group>3</op_group>
+			<filter>1</filter>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<page test_type="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+</suite>
