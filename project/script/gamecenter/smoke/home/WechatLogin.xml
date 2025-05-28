@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <title>游戏会员</title>
+		<entrance>游戏会员</entrance>
+        <button_name>开通会员</button_name>
+        <text>购买游戏会员</text>
+        <login>立即登录</login>
+        <actionBar_title>其它方式登录</actionBar_title>
+    </paramater>
+</data>

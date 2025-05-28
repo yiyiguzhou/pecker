@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<suite shelf="qudao_getList">
+	<url>
+		<url_name>qudao_getList</url_name>
+		<url_place>http://apisgame.qiyi.domain/pay/qudao/getList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="7" name="status未传，返回全部渠道">
+		<input_parameter>
+			<sign>336e16f10be8d4b9b25776663cde9c34</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,126 @@
+<?xml version="1.0" ?>
+<suite shelf="APackage_findGame">
+	<url>
+		<url_name>APackage_findGame</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/android/APackage/findGame?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="source不传/为空">
+		<input_parameter>
+			<package_name>com.mango.sanguo15.pps</package_name>
+			<sign>c6ceefe938d0cd44ba83f81dd72c4358</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source不在范围内">
+		<input_parameter>
+			<package_name>com.mango.sanguo15.pps</package_name>
+			<sign>8d0a4f52330122bbaf22f7efaf0e8435</sign>
+			<source>88</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="sign不传/为空">
+		<input_parameter>
+			<package_name>com.mango.sanguo15.pps</package_name>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="sign错误">
+		<input_parameter>
+			<package_name>com.mango.sanguo15.pps</package_name>
+			<sign>c6ceefe938d0cd44ba8</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="package_name不传/为空">
+		<input_parameter>
+			<sign>336e16f10be8d4b9b25776663cde9c34</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="传入没有对应游戏的包名">
+		<input_parameter>
+			<package_name>com.mango</package_name>
+			<sign>445625b4820e3577abaf86e5b8c11126</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="package_name上传一个包名">
+		<input_parameter>
+			<package_name>com.mango.sanguo15.pps</package_name>
+			<sign>c6ceefe938d0cd44ba83f81dd72c4358</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>244</game_id>
+				<package_name>com.mango.sanguo15.pps</package_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="package_name上传多个包名—分隔符错误">
+		<input_parameter>
+			<package_name>com.a3733.gamebox/com.soco.veggies2_lenovo/cn.ultralisk.gameapp.game09.vip.iqiyi/vmovier.com.activity</package_name>
+			<sign>469f660a5c498fea5c702da3269cd591</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="package_name上传多个包名—正确上传">
+		<input_parameter>
+			<package_name>com.a3733.gamebox,com.soco.veggies2_lenovo,cn.ultralisk.gameapp.game09.vip.iqiyi,vmovier.com.activity</package_name>
+			<sign>943dffe5e2756f295b758a393cfaf814</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>11261</game_id>
+				<package_name>cn.ultralisk.gameapp.game09.vip.iqiyi</package_name>
+			</data>
+			<data>
+				<game_id>7175</game_id>
+				<package_name>com.a3733.gamebox</package_name>
+			</data>
+			<data>
+				<game_id>7166</game_id>
+				<package_name>vmovier.com.activity</package_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="上传一个包名对应多个游戏">
+		<input_parameter>
+			<package_name>com.zz.yy</package_name>
+			<sign>1123fc485a47237124a89efc6b229575</sign>
+			<source>6
+</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>7135</game_id>
+				<package_name>com.zz.yy</package_name>
+			</data>
+		</expect>
+	</testcase>
+</suite>

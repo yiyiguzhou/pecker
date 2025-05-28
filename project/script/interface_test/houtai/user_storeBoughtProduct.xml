@@ -1,0 +1,376 @@
+<?xml version="1.0" ?>
+<suite shelf="user_storeBoughtProduct">
+	<url>
+		<url_name>user_storeBoughtProduct</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/inner/user/storeBoughtProduct?</url_place>
+		<response_method>POST_body</response_method>
+	</url>
+	<testcase id="1" name="购买奇贝-回调成功">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000004035</order_id>
+			<order_status>1</order_status>
+			<product_id>1</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>qibei</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="订单回调成功后再次调用-回调失败">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000004031</order_id>
+			<order_status>1</order_status>
+			<product_id>1</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>qibei</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10022</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="购买会员-回调成功">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000001031</order_id>
+			<order_status>1</order_status>
+			<product_id>45</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>vip</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="买断游戏-回调成功">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000002032</order_id>
+			<order_status>1</order_status>
+			<product_id>10158</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="租用游戏-回调成功">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003031</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="用户不存在">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1420000000</user_id>
+			<order_id>1708281403000003031</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10021</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="sign错误">
+		<input_parameter>
+			<sign>www</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="参数错误-user_id为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="参数错误-user_id非整形">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>xyz</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="参数错误-order_id为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="参数错误-order_id非整形">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>sss</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="参数错误-order_status为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="参数错误-order_status非整形">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>ddd</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="参数错误-product_id为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="参数错误-product_id非整形">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>rrt</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="参数错误-pay_time为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="参数错误-pay_time sql注入">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>'2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10004</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="参数错误-pay_time xss注入">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>&lt;script&gt;alert'ok'&lt;/script&gt;2017-08-28 14:05:41</pay_time>
+			<product_type>rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10004</code>
+		</expect>
+	</testcase>
+	<testcase id="19" name="参数错误-product_type为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="20" name="参数错误-product_type sql注入">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>'rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10018</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="参数错误-product_type xss注入">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000003030</order_id>
+			<order_status>1</order_status>
+			<product_id>10151</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>&lt;script&gt;alert'ok'&lt;/script&gt;rented_game</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10018</code>
+		</expect>
+	</testcase>
+	<testcase id="22" name="参数错误-product_count为空">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000004030</order_id>
+			<order_status>1</order_status>
+			<product_id>1</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>qibei</product_type>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="23" name="参数错误-product_count非整形">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000004030</order_id>
+			<order_status>1</order_status>
+			<product_id>1</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>qibei</product_type>
+			<product_count>ee</product_count>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="24" name="商品类型错误">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000004030</order_id>
+			<order_status>1</order_status>
+			<product_id>1</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>qibeiaaa</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10018</code>
+		</expect>
+	</testcase>
+	<testcase id="25" name="会员卡不存在">
+		<input_parameter>
+			<sign>%{sign}</sign>
+			<user_id>1422862765</user_id>
+			<order_id>1708281403000001030</order_id>
+			<order_status>1</order_status>
+			<product_id>1001</product_id>
+			<pay_time>2017-08-28 14:05:41</pay_time>
+			<product_type>vip</product_type>
+			<product_count>1</product_count>
+		</input_parameter>
+		<expect>
+			<code>10022</code>
+		</expect>
+	</testcase>
+</suite>

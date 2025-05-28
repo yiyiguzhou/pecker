@@ -1,0 +1,20 @@
+{% import "table_module.html" as T %}
+{% extends 'base.html' %}
+{% include 'func.js' %}
+{% block title%} iPecker Report{% endblock%}
+
+{% block total %}
+{{ T.make_total_table(testresult) }}
+{% endblock %}
+
+{% block loop_table %}
+{{ T.make_loop_table(testresult) }}
+{% endblock %}
+
+{% block testcase %}
+{{ T.make_testcase_table(testresult) }}
+{% endblock %}
+
+{% block block_testcase %}
+{{ T.make_block_testcase_table(testresult) }}
+{% endblock %}

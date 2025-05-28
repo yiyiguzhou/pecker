@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="2">
+	<testcase loop="1">script/gamecenter/demo/PositionPressureSmallGame</testcase>
+	<!--<testcase loop="2">script/gamecenter/demo/PositionPressure</testcase>-->
+	<testcase loop="3">script/ut/TestPassed</testcase>
+	<testcase loop="4">script/ut/TestError</testcase>
+	<testcase loop="5">script/ut/TestFailed</testcase>
+</project>

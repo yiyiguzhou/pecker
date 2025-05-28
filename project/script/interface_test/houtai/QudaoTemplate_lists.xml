@@ -1,0 +1,121 @@
+<?xml version="1.0" ?>
+<suite shelf="QudaoTemplate_lists">
+	<url>
+		<url_name>QudaoTemplate_lists</url_name>
+		<url_place>http://apisgame.qiyi.domain/pay/inner/QudaoTemplate/lists?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="source传入空或未传">
+		<input_parameter>
+			<network>1</network>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source传入非来源内的值">
+		<input_parameter>
+			<network>1</network>
+			<source>330</source>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="terminal传入非整形，或非{1,4,5,6,7}">
+		<input_parameter>
+			<network>1</network>
+			<source>6</source>
+			<terminal>1a</terminal>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="network传入非整形，或非{1,2}">
+		<input_parameter>
+			<network>11</network>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="terminal不传，返回所有终端">
+		<input_parameter>
+			<network>1</network>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">$:1,2,3,4,5,6,7,8</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="terminal传入，返回对应终端">
+		<input_parameter>
+			<source>6</source>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="network不传，返回所有联网方式">
+		<input_parameter>
+			<source>6</source>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">$:1,2</network>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="network传入，返回对应网络方式">
+		<input_parameter>
+			<network>1</network>
+			<source>6</source>
+			<terminal>1</terminal>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">1</network>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="所有必填参数传入，请求成功,返回对应的渠道模板， 如果有默认的，默认的放在第一条数据">
+		<input_parameter>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">$:1,2</network>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="所有参数传入，请求成功,返回对应的渠道模板， 如果有默认的，默认的放在第一条数据">
+		<input_parameter>
+			<network>1</network>
+			<source>6</source>
+			<terminal>7</terminal>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">1</network>
+				<terminal test_type="all">7</terminal>
+			</data>
+		</expect>
+	</testcase>
+</suite>

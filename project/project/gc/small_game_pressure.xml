@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<project sort="normal" loop="1">
+	<!--<testcase loop="1">script/gamecenter/smallgame/PressureDesktopIntoSmallGame</testcase>-->
+	<testcase loop="1">script/gamecenter/smallgame/PressureBaseIntoSmallGame</testcase>
+</project>

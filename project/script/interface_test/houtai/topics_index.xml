@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<suite shelf="topics_index">
+	<url>
+		<url_name>topics_index</url_name>
+		<url_place>http://production.game.qiyi.domain/api/topics/index?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="获取游戏专题信息_fr不上传">
+		<input_parameter>
+			<id>5</id>
+		</input_parameter>
+		<expect>
+			<code>2003</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="获取游戏专题信息_fr不填写">
+		<input_parameter>
+			<id>5</id>
+		</input_parameter>
+		<expect>
+			<code>2003</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="获取游戏专题信息_不填参数id">
+		<input_parameter>
+			<fr>19</fr>
+		</input_parameter>
+		<expect>
+			<code>0</code>
+			<data>
+				<id>4</id>
+			</data>
+			<data>
+				<id>159</id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="获取游戏专题信息_所有参数正确">
+		<input_parameter>
+			<fr>19</fr>
+			<id>5</id>
+		</input_parameter>
+		<expect>
+			<code>0</code>
+			<data>
+				<id>4</id>
+				<name>测试专题</name>
+				<game>
+					<game_name>移动端测试专用2</game_name>
+					<qp_id>207704720</qp_id>
+					<need_auth>0</need_auth>
+					<game_id>10003</game_id>
+				</game>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="上传不存在的专题编号">
+		<input_parameter>
+			<fr>19</fr>
+			<id>200</id>
+		</input_parameter>
+		<expect>
+			<code>1001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="上传非int型专题编号">
+		<input_parameter>
+			<fr>19</fr>
+			<id>4.3</id>
+		</input_parameter>
+		<expect>
+			<code>1001</code>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,13 @@
+requests
+selenium==3.8.0
+Appium-Python-Client==0.25
+jdcal==1.4
+# pypiwin32
+opencv-python
+xlrd
+Jinja2==2.10
+aircv==1.4.6
+mitmproxy==4.0.3
+openpyxl==2.5.8
+PyQt5
+Pillow==5.1

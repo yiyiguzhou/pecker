@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<suite shelf="UGame_gameOpGroup">
+	<url>
+		<url_name>UGame_gameOpGroup</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/unified/UGame/gameOpGroup?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="成功获取运营组">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id_2>棋牌游戏</game_id_2>
+				<game_id_3>VR游戏</game_id_3>
+				<game_id_4>独立游戏</game_id_4>
+				<game_id_5>娱乐游戏</game_id_5>
+				<game_id_6>发行手游</game_id_6>
+				<game_id_7>发行页游</game_id_7>
+				<game_id_8>联运手游</game_id_8>
+				<game_id_9>联运页游</game_id_9>
+				<game_id_10>发行H5游</game_id_10>
+				<game_id_11>联运H5游</game_id_11>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source缺失">
+		<input_parameter>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="source传入枚举值之外的值">
+		<input_parameter>
+			<source>28</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="参数sign缺失">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="参数sign错误">
+		<input_parameter>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

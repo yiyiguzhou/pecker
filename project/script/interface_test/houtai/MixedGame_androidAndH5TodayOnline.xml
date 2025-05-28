@@ -1,0 +1,55 @@
+<?xml version="1.0" ?>
+<suite shelf="MixedGame_androidAndH5TodayOnline">
+	<url>
+		<url_name>MixedGame_androidAndH5TodayOnline</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/inner/MixedGame/androidAndH5TodayOnline?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="移动端和h5今日上情查询">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<android>0</android>
+				<h5>0</h5>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必传参数source为枚举值之外的值，接口返回异常响应码:10001">
+		<input_parameter>
+			<source>200</source>
+			<sign>29edea2ace7c3b1a75df1f2551a70b4a</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="必传参数source缺失，接口返回异常响应码:10001">
+		<input_parameter>
+			<sign>b18c5b406eb9000b2bed949022b7d039</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="必传参数sign错误，接口返回异常响应码:10002">
+		<input_parameter>
+			<source>1</source>
+			<sign>11</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="必传参数sign缺失，接口返回异常响应码:10001">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+</suite>

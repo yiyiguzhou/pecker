@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<suite shelf="UGame_getForumIdByGameId">
+	<url>
+		<url_name>UGame_getForumIdByGameId</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/unified/UGame/getForumIdByGameId?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="根据游戏id查询论坛id&amp;请求成功">
+		<input_parameter>
+			<source>2</source>
+			<game_id>268</game_id>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<fid>156</fid>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必传参数game_id缺失&amp;接口返回异常响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="根据游戏id查询论坛id&amp;游戏id不存在&amp;接口返回异常响应码:50001">
+		<input_parameter>
+			<source>1</source>
+			<game_id>11111111</game_id>
+			<sign>0aacb37ab37eda4aa52514b5ff6d5c72</sign>
+		</input_parameter>
+		<expect>
+			<code>50001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="请求参数game_id为非整型&amp;接口返回异常响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<game_id>xx</game_id>
+			<sign>b41b93576e8586af7b03a4e8fa814b02</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="请求参数source为枚举值之外的值&amp;接口返回异常响应码:10001">
+		<input_parameter>
+			<source>150</source>
+			<game_id>7166</game_id>
+			<sign>9a37083f2a9140db8f32cce317a7c2c9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数source不传&amp;接口返回异常响应码:10001">
+		<input_parameter>
+			<game_id>7166</game_id>
+			<sign>d11f71f969c13e414d11a39070cc3640</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数sign错误&amp;接口返回异常响应码:10002">
+		<input_parameter>
+			<source>1</source>
+			<game_id>7166</game_id>
+			<sign>1111</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数sign不传&amp;接口返回异常响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<game_id>7166</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+</suite>

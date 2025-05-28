@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <account>17612170004</account>
+        <password>!feng122772</password>
+        <title>游戏会员</title>
+        <game_name>我是车神3D狂飙-精品版</game_name>
+        <order_confirm>订单确认</order_confirm>
+        <rent_title>会员包月</rent_title>
+        <rent_price>1 奇贝/月</rent_price>
+        <payment>立即支付</payment>
+        <open_vip>开通会员</open_vip>
+        <actionBar_title>游戏会员</actionBar_title>
+        <alipay_account></alipay_account>
+        <alipay_password></alipay_password>
+    </paramater>
+</data>

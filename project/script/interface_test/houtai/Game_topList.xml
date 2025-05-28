@@ -1,0 +1,155 @@
+<?xml version="1.0" ?>
+<suite shelf="Game_topList">
+	<url>
+		<url_name>Game_topList</url_name>
+		<url_place>http://production.game.qiyi.domain/api/Game/topList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<!--<testcase id="1" name="fr为空或不传">
+		<input_parameter/>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="2" name="type为空或不传">
+		<input_parameter/>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="3" name="所有必填参数，返回正确结果">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="4" name="所有参数，返回正确结果">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+			<page>1</page>
+			<limit>20</limit>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="5" name="need_auth=1，需要鉴权">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+			<page>1</page>
+			<limit>20</limit>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="need_auth=0，不需要鉴权">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+			<page>1</page>
+			<limit>20</limit>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<need_auth test_type="all">0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="type=1，精品榜规则：直接按照总下载量顺序来取80款游戏">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>real_download</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>-->
+	<testcase id="8" name="type=2，网游榜规则：数据取近7天网游下载数量前80名的游戏信息">
+		<input_parameter>
+			<fr>6</fr>
+			<type>2</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>type=2</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<!--<testcase id="9" name="type=3，单机榜规则：数据取近7天单机下载数量前80名的游戏信息">
+		<input_parameter>
+			<fr>6</fr>
+			<type>3</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>type=3</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="type=4，新游榜规则：数据取近1个月上线的游戏中最近7天下载数量前80名的游戏信息">
+		<input_parameter>
+			<fr>6</fr>
+			<type>4</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>type=4</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>-->
+	<!--<testcase id="11" name="接口返回中游戏排序-根据下载量进行降序排序">
+		<input_parameter>
+			<fr>6</fr>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>real_download</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="根据fr=16（来源为游戏中心）过滤游戏">
+		<input_parameter>
+			<fr>16</fr>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>-->
+</suite>

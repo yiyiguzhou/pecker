@@ -1,0 +1,231 @@
+<?xml version="1.0" ?>
+<suite shelf="qibei_unfreeze">
+	<url>
+		<url_name>qibei_unfreeze</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/inner/qibei/unfreeze?</url_place>
+		<response_method>POST</response_method>
+	</url>
+	<testcase id="1" name="不上传必填参source">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>058e95338f528a2de8f1ab705a5a0e77</sign>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="不上传必填参sign">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="不上传必填参user_id">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>074a153d06b660510c63b342fd790682</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="不上传必填参数channel_detail ">
+		<input_parameter>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+			<sign>6e86a8f23ab00404dbc6f552514777f6</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="不填写必填参数sign">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="不填写必填参数user_id">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>074a153d06b660510c63b342fd790682</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="不填写必填参数channel_detail">
+		<input_parameter>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+			<sign>6e86a8f23ab00404dbc6f552514777f6</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="不填写必填参数source">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>058e95338f528a2de8f1ab705a5a0e77</sign>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="source填写错误（非1-32的值）">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>1739924dfd3f28e0a105f76eb417e948</sign>
+			<source>40</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="sign参数填写错误">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>1739924dfd3f28e0</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="source参数填写错误（非int型字符）">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>b28f04cfbbaa34e9fdebabdaf7fed0eb</sign>
+			<source>a</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="user_id参数填写错误（非int型字符）">
+		<input_parameter>
+			<channel_detail>1801291422000056422</channel_detail>
+			<sign>488d67b84b3120e6e66c2671dd6b8cd9</sign>
+			<source>1</source>
+			<user_id>a4516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="channel_detail参数填写错误（非int字符）">
+		<input_parameter>
+			<channel_detail>a100056422</channel_detail>
+			<sign>9b8326b8aa465c2a63baa7cbf89d513a</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="上传不存在订单id">
+		<input_parameter>
+			<channel_detail>180129142200022222</channel_detail>
+			<sign>65dbc97205d2b806b866b2d268db759c</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>30007</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="上传不需要抵扣奇贝的订单id">
+		<input_parameter>
+			<channel_detail>1801291328000055422</channel_detail>
+			<sign>1d6c91f1d8a31e08b022b0d1586b63a9</sign>
+			<source>1</source>
+			<user_id>1464650953</user_id>
+		</input_parameter>
+		<expect>
+			<code>30008</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="上传用户ID和订单ID里的用户信息不一致">
+		<input_parameter>
+			<channel_detail>1801291328000055422</channel_detail>
+			<sign>0633d6289f59857bae0f0ffdd6af1d87</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>30008</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="上传的订单为已支付的订单">
+		<input_parameter>
+			<channel_detail>1801172120000017222</channel_detail>
+			<sign>024a274b849ef6557180d756a9c54ce1</sign>
+			<source>1</source>
+			<user_id>1464650953</user_id>
+		</input_parameter>
+		<expect>
+			<code>30013</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="解冻成功">
+		<input_parameter>
+			<channel_detail>1801021728000009022</channel_detail>
+			<sign>5585cf65fc12df1619011032a952207f</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="19" name="重复解冻同一订单">
+		<input_parameter>
+			<channel_detail>1801021728000009022</channel_detail>
+			<sign>5585cf65fc12df1619011032a952207f</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>30012</code>
+		</expect>
+	</testcase>
+	<testcase id="20" name="上传没有冻结记录的订单">
+		<input_parameter>
+			<channel_detail>1801021737000010722</channel_detail>
+			<sign>05d8be555d9e36f7b8864b674e13e1f6</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>30008</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="上传没有冻结过的订单">
+		<input_parameter>
+			<channel_detail>1801021737000010722</channel_detail>
+			<sign>05d8be555d9e36f7b8864b674e13e1f6</sign>
+			<source>1</source>
+			<user_id>1444516752</user_id>
+		</input_parameter>
+		<expect>
+			<code>30007</code>
+		</expect>
+	</testcase>
+</suite>

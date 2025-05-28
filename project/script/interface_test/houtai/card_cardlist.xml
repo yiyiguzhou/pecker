@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<suite shelf="card_cardlist">
+	<url>
+		<url_name>card_cardlist</url_name>
+		<url_place>http://production.game.qiyi.domain/api/card/cardlist?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="network=1">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<list>
+					<game_network test_type="all">1</game_network>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="network=2">
+		<input_parameter>
+			<fr>1</fr>
+			<network>2</network>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<list>
+					<game_network test_type="all">2</game_network>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="card_class错误">
+		<input_parameter>
+			<fr>1</fr>
+			<card_class>a</card_class>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="4" name="limit=错误">
+		<input_parameter>
+			<fr>1</fr>
+			<limit>q</limit>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="5" name="publish_area错误">
+		<input_parameter>
+			<fr>1</fr>
+			<publish_area>a</publish_area>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="6" name="needauth为非0,1的值">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>3</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="7" name="needauth=0">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<list>
+					<need_auth test_type="all">0</need_auth>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="needauth=1">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>1</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<list>
+					<need_auth test_type="all">1</need_auth>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="选填参数未填">
+		<input_parameter>
+			<fr>1</fr>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+		</expect>
+	</testcase>
+	<testcase id="10" name="terminal=1,2,3">
+		<input_parameter>
+			<fr>1</fr>
+			<terminal>1,2,3</terminal>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<list>
+					<game_terminal test_type="all">$:1,2,3</game_terminal>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="card_class=1@2@3（未用逗号分隔）">
+		<input_parameter>
+			<fr>1</fr>
+			<card_class>1@2@3</card_class>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="12" name="publish_area=5（超出值）">
+		<input_parameter>
+			<fr>1</fr>
+			<publish_area>5</publish_area>
+		</input_parameter>
+		<expect>
+			<status>1001</status>
+		</expect>
+	</testcase>
+	<testcase id="13" name="need_auth=2（超出值）">
+		<input_parameter>
+			<fr>1</fr>
+			<need_auth>2</need_auth>
+		</input_parameter>
+		<expect>
+			<status>1000</status>
+		</expect>
+	</testcase>
+	<testcase id="14" name="所填参数均正确">
+		<input_parameter>
+			<fr>1</fr>
+			<network>1</network>
+			<terminal>4</terminal>
+			<card_class>1</card_class>
+			<page>1</page>
+			<limit>5</limit>
+			<game_id>2756</game_id>
+			<rank>1</rank>
+			<show_location>1,2,3</show_location>
+			<remain_num>1</remain_num>
+			<publish_area>1</publish_area>
+			<need_auth>0</need_auth>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<total>1</total>
+				<list>
+					<card_id>9693177</card_id>
+					<game_id>2756</game_id>
+					<return_card_nums>1</return_card_nums>
+					<card_name>盛世三国2新手卡</card_name>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+</suite>

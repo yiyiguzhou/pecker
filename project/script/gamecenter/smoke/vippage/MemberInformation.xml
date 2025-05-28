@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <title>游戏会员</title>
+		<entrance>游戏会员</entrance>
+        <button_name>开通会员玩更多游戏</button_name>
+        <text>立即登录</text>
+        <open_icon>立即开通</open_icon>
+        <login>其它方式登录</login>
+        <password_login>密码登录</password_login>
+        <account>18817204836</account>
+        <password>886886gg</password>
+        <actionBar_title>游戏会员</actionBar_title>
+    </paramater>
+</data>

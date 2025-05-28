@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <special_topic>爱奇艺小游戏</special_topic>
+        <title>游戏中心</title>
+        <details>详情</details>
+		<entrace_number>5</entrace_number>
+    </paramater>
+</data>

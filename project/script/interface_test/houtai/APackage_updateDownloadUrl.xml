@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<suite shelf="APackage_updateDownloadUrl">
+	<url>
+		<url_name>APackage_updateDownloadUrl</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/android/APackage/updateDownloadUrl?</url_place>
+		<response_method>POST</response_method>
+	</url>
+	<testcase id="1" name="source传入空或未传">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<sign>ae9e33f94368e7bdb7f57bd074491737</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="source传入非来源内的值">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<sign>f87e93072d55ba6ee4e10722cc1652ed</sign>
+			<source>111</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="sign传入空或未传">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="sign传入错误签名">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<sign>1</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="game_id未传或传入空">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<sign>86ad6c20a71cd140266e37f5ce0ea2e5</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="game_id传入非整形">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>1a</game_id>
+			<package_code>1</package_code>
+			<sign>3bf5230089002c39c2d5ca8fe8c601ed</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="package_code未传或传入空">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>1</game_id>
+			<sign>596e36bfc4f8f7fb10d2680be91723b7</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="package_code传入非整形">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>1</game_id>
+			<package_code>1a</package_code>
+			<sign>5afb02be5dc51a702419768c0a346b75</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="data传入非json型">
+		<input_parameter>
+			<data>1</data>
+			<game_id>7132</game_id>
+			<package_code>1</package_code>
+			<sign>1709ac3b58604f6c11afefb9cd74dcb5</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>500</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="data未传入或传入空">
+		<input_parameter>
+			<game_id>1</game_id>
+			<package_code>1</package_code>
+			<sign>a3e61f9e94d93a96d55e75c38014f5de</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="game_id传入格式正确，但不存在的值">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>1</game_id>
+			<package_code>1</package_code>
+			<sign>2ff5a8f838ab62b283ee78c61f3993e3</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="package_code传入格式正确但不存在的值">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>1</game_id>
+			<package_code>1</package_code>
+			<sign>2ff5a8f838ab62b283ee78c61f3993e3</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="data下所有参数均填写完成，请求成功">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;xxx&quot;,&quot;iqiyi_download&quot;:&quot;xxx&quot;,&quot;qipu_download&quot;:&quot;xxx&quot;,&quot;haima_url&quot;:&quot;xxx&quot;,&quot;pps_md5&quot;:&quot;xxx&quot;,&quot;haima_md5&quot;:&quot;xxx&quot;}</data>
+			<game_id>7132</game_id>
+			<package_code>2</package_code>
+			<sign>73a9c0d65851ff72e49938e42e4da941</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="data下所有参数填写部分，请求成功">
+		<input_parameter>
+			<data>{&quot;pps_download&quot;:&quot;http://111&quot;}</data>
+			<game_id>7132</game_id>
+			<package_code>1</package_code>
+			<sign>53bc508d90d6d92ab10d23733f6a79f6</sign>
+			<source>6</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+</suite>

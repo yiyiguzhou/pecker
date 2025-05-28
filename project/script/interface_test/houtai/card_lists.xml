@@ -1,0 +1,298 @@
+<?xml version="1.0" ?>
+<suite shelf="card_lists">
+	<url>
+		<url_name>card_lists</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/card/lists?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="只传必填参source和sign">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>5</id>
+			</data>
+			<data>
+				<id>6</id>
+			</data>
+			<data>
+				<id>34</id>
+			</data>
+			<data>
+				<id>40</id>
+			</data>
+			<data>
+				<id>38</id>
+			</data>
+			<data>
+				<id>39</id>
+			</data>
+			<data>
+				<id>41</id>
+			</data>
+			<data>
+				<id>46</id>
+			</data>
+			<data>
+				<id>49</id>
+			</data>
+			<data>
+				<id>50</id>
+			</data>
+			<data>
+				<id>59</id>
+			</data>
+			<data>
+				<id>61</id>
+			</data>
+			<data>
+				<id>62</id>
+			</data>
+			<data>
+				<id>63</id>
+			</data>
+			<data>
+				<id>67</id>
+			</data>
+			<data>
+				<vip_type test_type="all">$:1,2</vip_type>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="不填必填参source">
+		<input_parameter>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="不填必填参sign">
+		<input_parameter>
+			<source>2</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="上传type为1，过滤充值会员">
+		<input_parameter>
+			<source>1</source>
+			<sign>1ca19ec3a37ff76160854a9935d9641e</sign>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<vip_type test_type="all">1</vip_type>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="上传type为2，过滤体验会员">
+		<input_parameter>
+			<source>1</source>
+			<sign>2a21845e1bcab8680fe4026d8835afeb</sign>
+			<type>2</type>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<vip_type test_type="all">2</vip_type>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="上传type非整型">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+			<type>qq</type>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="上传type为枚举值之外的">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+			<type>3</type>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="上传original_price不为整型">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+			<original_price>kkk</original_price>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="上传original_price正确过滤">
+		<input_parameter>
+			<source>1</source>
+			<sign>ce063975f8d9d17d640f695072a367ed</sign>
+			<original_price>100</original_price>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<original_price test_type="all">100</original_price>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="上传ids均不存在">
+		<input_parameter>
+			<source>1</source>
+			<sign>7607666558c2208a33f2193919f99461</sign>
+			<ids>10000,10001</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="上传ids为一个正确过滤">
+		<input_parameter>
+			<source>1</source>
+			<sign>47df13239902f3a9cee4c9608a661ed5</sign>
+			<ids>35</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="上传ids为多个，正确过滤">
+		<input_parameter>
+			<source>1</source>
+			<sign>5a82bb508a3e502dbd2343138650bf9f</sign>
+			<ids>6,27,32</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>6</id>
+				<name>年卡</name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="13" name="上传ids为多个时分隔符错误">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+			<ids>2.3/4</ids>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="status不上传，默认返回启用的">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<status test_type="all">1</status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="15" name="上传status为all，返回启用的和未启用的">
+		<input_parameter>
+			<source>1</source>
+			<sign>b5d4cc67cb60b33fd25bca45f9735c1b</sign>
+			<status>all</status>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<status test_type="all">$:0,1</status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="16" name="上传status为enabled，返回启用的">
+		<input_parameter>
+			<source>2</source>
+			<sign>767ebaa13512550833ddc188f89250ea</sign>
+			<status>enabled</status>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<status test_type="all">1</status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="17" name="上传status为position=1，正确过滤">
+		<input_parameter>
+			<source>2</source>
+			<sign>11045114cafdd03e9816bfbe73aa9647</sign>
+			<position>1</position>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<position test_type="all">1</position>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="18" name="上传status为position=2，正确过滤">
+		<input_parameter>
+			<source>2</source>
+			<sign>25ac643d4c46edb1c7ab64313c6ac97d</sign>
+			<position>2</position>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<position test_type="all">2</position>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="19" name="上传会员卡（不打折）">
+		<input_parameter>
+			<source>2</source>
+			<sign>6427d99af11cb8bddb764ed0d92c0ab0</sign>
+			<ids>38</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>38</id>
+				<name>20元买2个月会员卡</name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="20" name="会员卡打折且在打折期内">
+		<input_parameter>
+			<source>2</source>
+			<sign>%{sign}</sign>
+			<ids>6</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<is_discount test_type="all">1</is_discount>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="21" name="会员卡打折且不在打折期内">
+		<input_parameter>
+			<source>2</source>
+			<sign>cd387058f02a8bdde009a05b18281a0d</sign>
+			<ids>66</ids>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<is_discount test_type="all">0</is_discount>
+			</data>
+		</expect>
+	</testcase>
+</suite>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% block head %}
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+</head>
+<body>
+    <div><h3 align="center">iPecker 测试结果汇总</h3></div>
+    <div>{% block total %}{% endblock %}</div>
+    {% if testresult.loop_times > 1 %}
+    <div><h3 id="loopTitle" align="center">用例集循环汇总</h3></div>
+    <div style="overflow:scroll; max-height:300px; width: 100%;">{% block loop_table %}{% endblock %}</div>
+    {% endif %}
+    <div><h3 id="testcaseTitle" align="center">用例执行汇总</h3></div>
+    <div style="overflow:scroll; max-height:600px; width: 100%;">{% block testcase %}{% endblock %}</div>
+
+    <div><h3 align="center">Block用例统计</h3></div>
+    <div style="overflow:scroll; max-height:600px; width: 100%;">{% block block_testcase %}{% endblock %}</div>
+</body>

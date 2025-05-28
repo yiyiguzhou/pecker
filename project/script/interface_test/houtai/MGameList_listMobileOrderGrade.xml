@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+<suite shelf="MGameList_listMobileOrderGrade">
+	<url>
+		<url_name>MGameList_listMobileOrderGrade</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/mixed/MGameList/listMobileOrderGrade?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="查询全部手机游戏列表,优先按评分降序，再按上线时间降序">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="查询Android网络游戏列表">
+		<input_parameter>
+			<network>1</network>
+			<terminal>1</terminal>
+			<page>3</page>
+			<page_size>2</page_size>
+			<source>1</source>
+			<sign>c1294d6d41b651eae1ee07c8ac4aab7b</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<game_type test_type="all">2</game_type>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="查询IOS越狱网络游戏列表">
+		<input_parameter>
+			<network>1</network>
+			<terminal>2</terminal>
+			<page>1</page>
+			<page_size>3</page_size>
+			<source>1</source>
+			<sign>d5cf02d85afae202a4a71b84cf7f7819</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<terminal test_type="all">2</terminal>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="查询IOS正版网络游戏列表">
+		<input_parameter>
+			<network>1</network>
+			<terminal>3</terminal>
+			<page>1</page>
+			<page_size>3</page_size>
+			<source>1</source>
+			<sign>3af566fdfbf315783d2d76eff99a10be</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<terminal test_type="all">3</terminal>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="请求参数network传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<network>3</network>
+			<source>1</source>
+			<sign>af51f0978ea38a70cadc9ab3b9b23f7f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数terminal传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<terminal>4</terminal>
+			<source>1</source>
+			<sign>8d24b867e6e45a61732840eb926a2677</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="page*page_size等于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>100</page_size>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page_size>100</page_size>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="page*page_size大于100">
+		<input_parameter>
+			<page>1</page>
+			<page_size>101</page_size>
+			<source>1</source>
+			<sign>b79db20658b6f8277687ea5f35b82b81</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数page=0，接口返回错误响应码">
+		<input_parameter>
+			<page>0</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>e943350054cc8b825ea8b2d05723e9f3</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数page_size=0，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>0</page_size>
+			<source>1</source>
+			<sign>6dcd99491feee4a147fc6b43247a9d3f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数page非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>a</page>
+			<page_size>10</page_size>
+			<source>1</source>
+			<sign>0fa22bb637f6739016c1175a28fe4468</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="请求参数page_size非整型，接口返回错误响应码">
+		<input_parameter>
+			<page>1</page>
+			<page_size>a</page_size>
+			<source>1</source>
+			<sign>50489b90f71058f79b82030d545e2e62</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<source>28</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

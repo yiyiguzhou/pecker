@@ -1,0 +1,566 @@
+<?xml version="1.0" ?>
+<suite shelf="qibei_log">
+	<url>
+		<url_name>qibei_log</url_name>
+		<url_place>http://apisgame.qiyi.domain/user/qibei/log?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="用户奇贝流水查询接口-传入用户ID为空">
+		<input_parameter>
+			<source>4</source>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>028cb312f20f8e122e1ec1b4f531397f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="用户奇贝流水查询接口-传入请求方标识为空">
+		<input_parameter>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>edba29c398097ec913e7b13c9ce4ded8
+</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="用户奇贝流水查询接口-传入签名为空">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="用户奇贝流水查询接口-传入用户ID非整形">
+		<input_parameter>
+			<source>4</source>
+			<user_id>xx</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="用户奇贝流水查询接口-传入请求方标识不在范围类">
+		<input_parameter>
+			<source>400</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>11226436ff77ff4507e1123013b8d26e</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="用户奇贝流水查询接口-传入请求方标识没有设置签名key">
+		<input_parameter>
+			<source>4xx</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>e29385a5a2958d45fb8ea8ca241331f6</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="用户奇贝流水查询接口-传入签名错误">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>13131313</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="用户奇贝流水查询接口-传入page格式错误">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<page>xx</page>
+			<sign>aa0aee79245d0b290c69b08f890230ff</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="用户奇贝流水查询接口-传入page_size格式错误">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<page_size>xx</page_size>
+			<sign>6343982eec17d5ea7f166a9a61085c4a</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="用户奇贝流水查询接口-根据用户ID未查询到记录-user_id存在">
+		<input_parameter>
+			<source>4</source>
+			<user_id>3976800</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>05b2ad135121a6f2e8ac2ce9b4141adb</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+
+				<total>0</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="用户奇贝流水查询接口-根据用户ID未查询到记录-user_id格式正确但不存在">
+		<input_parameter>
+			<source>4</source>
+			<user_id>12</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+
+				<total>0</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="用户奇贝流水查询接口-根据用户ID查询到记录-未设置page&amp;page_size">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>52f7c9f7d113c9b78d65a4e51cd597d8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="13" name="用户奇贝流水查询接口-根据用户ID查询到记录-start_time&amp;end_time异常导致未返回记录">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2017-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>6e111ead281d28a2a900e810a10213d6</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="用户奇贝流水查询接口-根据用户ID查询到记录-返回数据满足start_time&amp;end_time参数设置">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>52f7c9f7d113c9b78d65a4e51cd597d8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="15" name="用户奇贝流水查询接口-根据用户ID查询到记录-page&amp;page_size异常导致未返回记录">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>926c7770685ac3a8cfdc807b28bd8172</sign>
+			<page>10</page>
+			<page_size>10</page_size>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="16" name="用户奇贝流水查询接口-根据用户ID查询到记录-返回数据满足page&amp;&amp;page_size参数设置">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>bfc520d784b7d694469516da0b5f9855</sign>
+			<page>1</page>
+			<page_size>10</page_size>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="17" name="接口中只传入必填参数，返回正常">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>52f7c9f7d113c9b78d65a4e51cd597d8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="18" name="接口中传入所有参数，返回正常">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>bfc520d784b7d694469516da0b5f9855</sign>
+			<page>1</page>
+			<page_size>10</page_size>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="19" name="用户奇贝流水查询接口-外网内网均可以访问">
+		<input_parameter>
+			<source>4</source>
+			<user_id>1476177320</user_id>
+			<start_time>2018-02-1 11:04:01</start_time>
+			<end_time>2018-02-27 11:04:01</end_time>
+			<sign>52f7c9f7d113c9b78d65a4e51cd597d8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>MONTH_REWARD</channel>
+					<changes>20</changes>
+					<channel_detail>3488</channel_detail>
+					<desc>游戏会员每月赠送</desc>
+					<create_time>2018-02-2600:00:01</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802091503000058422</channel_detail>
+					<desc>果宝特攻4合体会员（租用）</desc>
+					<create_time>2018-02-0915:03:20</create_time>
+				</list>
+				<list>
+					<user_id>1476177320</user_id>
+					<channel>RENT_GAME</channel>
+					<changes>-1</changes>
+					<channel_detail>1802081832000057922</channel_detail>
+					<desc>巴啦啦魔法变身3hy（租用）</desc>
+					<create_time>2018-02-0818:32:21</create_time>
+				</list>
+				<total>3</total>
+				<start_time>2018-02-0111:04:01</start_time>
+				<end_time>2018-02-2711:04:01</end_time>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="20" name="用户奇贝流水查询接口-只设置start_time">
+		<input_parameter>
+			<channels>MONTH_REWARD</channels>
+			<except_channels>BUY_QIBEI</except_channels>
+			<sign>c77e25f647c1f624edfb87c40ae886bb</sign>
+			<source>1</source>
+			<start_time>2017-07-30 11:04:01</start_time>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="用户奇贝流水查询接口-只设置end_time">
+		<input_parameter>
+			<channels>MONTH_REWARD</channels>
+			<end_time>2018-02-02 11:04:01</end_time>
+			<except_channels>BUY_QIBEI</except_channels>
+			<sign>6af5415e72d34ee2ac8eeb3ec9659ccb</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="22" name="上传一个channels参数">
+		<input_parameter>
+			<channels>MONTH_REWARD</channels>
+			<sign>f2072e05af54fad8f8c16974afdb46dc</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<channel test_type="all">MONTH_REWARD</channel>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="23" name="上传多个参数channels值，用英文逗号隔开">
+		<input_parameter>
+			<channels>MONTH_REWARD,BUY_QIBEI</channels>
+			<sign>f608758bfb6f0733bf17509638d8cdbe</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<channel test_type="all">$:MONTH_REWARD,BUY_QIBEI</channel>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="24" name="上传多个参数channels值，用非英文逗号隔开">
+		<input_parameter>
+			<channels>MONTH_REWARD，BUY_QIBEI，BUY_GAME</channels>
+			<sign>127e72f82e36d8e0d9a44afa6d54bc6e</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="25" name="上传一个except_channels参数">
+		<input_parameter>
+			<except_channels>BUY_QIBEI</except_channels>
+			<sign>54c910a24c613a5809171727a9184ea0</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<channel test_type="all">$:MONTH_REWARD,FIRST_REWARD,BUY_GAME,RENT_GAME,OVERDUE,FREEZE,UNFREEZE</channel>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="26" name="上传多个参数except_channels值，用英文逗号隔开">
+		<input_parameter>
+			<except_channels>BUY_QIBEI,MONTH_REWARD</except_channels>
+			<sign>0b1da763b133a8482263282ecce0e5da</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<channel test_type="all">$:FIRST_REWARD,BUY_GAME,RENT_GAME,OVERDUE,FREEZE,UNFREEZE</channel>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="27" name="上传多个参数except_channels值，用非英文逗号隔开">
+		<input_parameter>
+			<except_channels>BUY_QIBEI，MONTH_REWARD</except_channels>
+			<sign>260c423b0ba9501e94e35f80e2060232</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="28" name="同时上传参数except_channels、channels">
+		<input_parameter>
+			<channels>MONTH_REWARD</channels>
+			<except_channels>BUY_QIBEI</except_channels>
+			<sign>d06fd6f9368ebd279593148d2039c5e2</sign>
+			<source>1</source>
+			<user_id>1307891232</user_id>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<list>
+					<channel test_type="all">MONTH_REWARD</channel>
+				</list>
+			</data>
+		</expect>
+	</testcase>
+</suite>

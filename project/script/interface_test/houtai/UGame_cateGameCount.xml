@@ -1,0 +1,206 @@
+<?xml version="1.0" ?>
+<suite shelf="UGame_cateGameCount">
+	<url>
+		<url_name>UGame_cateGameCount</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/unified/UGame/cateGameCount?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="只传必填参数source=1&amp;sign=xx,接口返回全部游戏分类下载数量
+">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">$:0,1,2,3,4,5,6,7,8,9,10,11,12,13</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="按分类id查询，传入单个cate_id,接口返回cate_id对应的游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<cate_id>1</cate_id>
+			<sign>01b300835c1dec2512136fe416ab8eb8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">1</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="按分类id查询，传入多个cate_id,接口返回cate_id对应的游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<cate_id>1,2</cate_id>
+			<sign>ae536f3fa3ae660abf860c5af235f784</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category test_type="all">$:1,2</category>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="请求参数cate_id为非整型，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<cate_id>xx</cate_id>
+			<sign>ece19d16c0b013ea922fce3442e5357a</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="请求参数传入network=1,返回网络游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<network>1</network>
+			<sign>60de5c8d25eff1606d3b9117714a55b3</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">1</network>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数传入network枚举值之外的值,接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<network>3</network>
+			<sign>af51f0978ea38a70cadc9ab3b9b23f7f</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数传入publish_area=1,接口发行区域为大陆的游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<publish_area>1</publish_area>
+			<sign>6dd7d83fdbbb063f387f7c79c8f91e1c</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<publish_area test_type="all">1</publish_area>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数publish_area传入枚举值之外的值,接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<publish_area>2</publish_area>
+			<sign>3d74b8d4dd3f67cc200e3f0965965ed2</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数传入online_status=1,接口返回已上线的游戏分类下载数量">
+		<input_parameter>
+			<source>1</source>
+			<online_status>1</online_status>
+			<sign>0bdd48f31c91632d5389251fae81f0de</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<online_status test_type="all">1</online_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数传入online_status枚举值之外的值,接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<online_status>7</online_status>
+			<sign>7057ae5a801113a6860caad850cde28b</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数传入terminal=4，接口返回接口返回PC_WEB端的游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<terminal>4</terminal>
+			<sign>8d24b867e6e45a61732840eb926a2677</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">4</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="12" name="请求参数传入terminal枚举值之外的值,接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<terminal>800</terminal>
+			<sign>c95a23b644831695ff4a0e9e8f35a758</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="没有任何分类时data 为 []（参数值设置正确，根据参数未查询到数据）">
+		<input_parameter>
+			<source>1</source>
+			<terminal>4</terminal>
+			<sign>8d24b867e6e45a61732840eb926a2677</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<source>200</source>
+			<sign>29edea2ace7c3b1a75df1f2551a70b4a</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="必传参数source缺失，接口返回错误响应码：10001">
+		<input_parameter>
+			<sign>a9f499985eec6ac9cd162e2e9b509a02</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="必传参数sign缺失，接口返回错误响应码：10001">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="17" name="必传参数sign错误，接口返回错误响应码：10002">
+		<input_parameter>
+			<source>1</source>
+			<sign>xx</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="请求多个参数传入terminal=3,4，接口返回接口返回PC_WEB端的游戏分类下载数量信息">
+		<input_parameter>
+			<source>1</source>
+			<terminal>3,4</terminal>
+			<sign>a836f5cfe3a414fbc5458e6a6167099f</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">$:3,4</terminal>
+			</data>
+		</expect>
+	</testcase>
+</suite>

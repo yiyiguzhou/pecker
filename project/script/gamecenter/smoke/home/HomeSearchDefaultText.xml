@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <defalut_text>风云2</defalut_text>
+        <defalut_text>奥特曼</defalut_text>
+        <defalut_text>熊出没</defalut_text>
+    </paramater>
+</data>

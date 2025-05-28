@@ -1,0 +1,152 @@
+<?xml version="1.0" ?>
+<suite shelf="WServer_gameLatestServerWithGameInfo">
+	<url>
+		<url_name>WServer_gameLatestServerWithGameInfo</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/web/WServer/gameLatestServerWithGameInfo?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="传入单个游戏id&amp;返回游戏信息和该游戏最新服务器信息">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<source>1</source>
+			<sign>7fff9ab29d5aa2d8bd0989765d6abe7f</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id_4882>
+					<game>
+						<name>盗墓笔记</name>
+					</game>
+					<server>
+						<id test_type="exist">4882</id>
+						<order test_type="exist">770</order>
+					</server>
+				</game_id_4882>
+			</data>
+		</expect>
+	</testcase>
+	<!--<testcase id="1" name="传入单个游戏id&amp;返回游戏信息和该游戏最新服务器信息">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<source>1</source>
+			<sign>7fff9ab29d5aa2d8bd0989765d6abe7f</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id_4882>
+					<game>
+						<id>4882</id>
+						<name>盗墓笔记</name>
+					</game>
+					<server>
+						<id>23905771</id>
+						<name>社会我中2哥</name>
+						<order>770</order>
+						<sno>770服</sno>
+					</server>
+				</game_id_4882>
+			</data>
+		</expect>
+	</testcase>-->
+	<!--<testcase id="2" name="传入多个游戏id&amp;返回所有游戏信息和对应游戏最新服务器信息">
+		<input_parameter>
+			<game_id>4882%2C192</game_id>
+			<source>1</source>
+			<sign>defe1035757decba7ef5a7da993bff7d</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id_4882>
+					<game>
+						<id>4882</id>
+						<name>盗墓笔记</name>
+					</game>
+					<server>
+						<id>23905771</id>
+						<name>社会我中2哥</name>
+						<order>770</order>
+						<sno>770服</sno>
+					</server>
+				</game_id_4882>
+				<game_id_192>
+					<game>
+						<id>192</id>
+					</game>
+					<server>
+						<id>45622</id>
+					</server>
+				</game_id_192>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="找不到id的信息&amp;返回游戏信息和服务器信息为空">
+		<input_parameter>
+			<game_id>1920</game_id>
+			<source>1</source>
+			<sign>f8013870aeb1e804d79c59e6c26d8ee6</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="游戏无服务器&amp;返回游戏信息&amp;服务器信息为空">
+		<input_parameter>
+			<game_id>137</game_id>
+			<source>1</source>
+			<sign>c1c0e21dab533f920832dedf0157609b</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="游戏id缺失&amp;返回参数错误">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数source缺失&amp;接口返回错误响应码">
+		<input_parameter>
+			<game_id>4882</game_id>
+			<sign>40cbb63bfae2576526fc6b57e8cebcf9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数source传入枚举值之外的值&amp;接口返回错误响应码">
+		<input_parameter>
+			<source>28</source>
+			<game_id>4882</game_id>
+			<sign>ff962c0fee6f1690c5184e65c085cb53</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数sign缺失&amp;接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<game_id>4882</game_id>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数sign错误&amp;接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>xxx</sign>
+			<game_id>4882</game_id>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>-->
+</suite>

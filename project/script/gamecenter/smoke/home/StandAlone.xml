@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <newgame>新游</newgame>
+        <poker>棋牌</poker>
+        <button_name>单机游戏</button_name>
+        <title>天生爱冒险</title>
+		<button_name>单机</button_name>
+        <title>精品单机游戏</title>	
+    </paramater>
+</data>

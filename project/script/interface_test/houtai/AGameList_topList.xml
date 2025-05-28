@@ -1,0 +1,208 @@
+<?xml version="1.0" ?>
+<suite shelf="AGameList_topList">
+	<url>
+		<url_name>AGameList_topList</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/android/AGameList/topList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="按精品榜规则查询">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+			<sign>1ca19ec3a37ff76160854a9935d9641e</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program cmp_method="check_sort">
+					<keyword>real_download</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="网游榜规则">
+		<input_parameter>
+			<source>1</source>
+			<type>2</type>
+			<sign>2a21845e1bcab8680fe4026d8835afeb</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program cmp_method="check_sort">
+					<keyword>type=2</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="3" name="单机榜规则">
+		<input_parameter>
+			<source>1</source>
+			<type>3</type>
+			<sign>6590810f732fd352bd2da7489d504ff8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program cmp_method="check_sort">
+					<keyword>type=3</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="4" name="新游榜规则">
+		<input_parameter>
+			<source>1</source>
+			<type>4</type>
+			<sign>5ca3268b773790c877f36ad3f634f449</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program cmp_method="check_sort">
+					<keyword>type=4</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="查询需要鉴权的游戏下载量排行(need_auth=1)">
+		<input_parameter>
+			<source>1</source>
+			<need_auth>1</need_auth>
+			<type>1</type>
+			<sign>dfe80dfb647c4e411c2e5d87927963d7</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<need_auth cmp_method="all">1</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="6" name="查询不需要鉴权的游戏下载量排行(need_auth=0)">
+		<input_parameter>
+			<source>1</source>
+			<need_auth>0</need_auth>
+			<type>1</type>
+			<sign>1f44070a5acd78bfbae7857631a30ff9</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<need_auth cmp_method="all">0</need_auth>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="默认参数page/page_size不传">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+			<sign>1ca19ec3a37ff76160854a9935d9641e</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page cmp_method="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="设置页码和页面容量">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+			<page>1</page>
+			<page_size>2</page_size>
+			<sign>d2096c2cdc6e01154bc052e2bb38faba</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page cmp_method="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="9" name="设置页码和页面容量(page*page_zise大于80)">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+			<page>1</page>
+			<page_size>200</page_size>
+			<sign>538a145ec467d369627bbb23e79de2c6</sign>
+		</input_parameter>
+		<expect>
+			<code>50005</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="必填参数source无效(source枚举值:1-14整数)">
+		<input_parameter>
+			<source>28</source>
+			<type>1</type>
+			<sign>16c5df2f17a157b2e88fb0ac9996c8b1</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="11" name="必填参数source不传">
+		<input_parameter>
+			<type>1</type>
+			<sign>2db37b2eba5392764df69936f37a89b8</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="必填参数type无效(type枚举值：1-4整数)">
+		<input_parameter>
+			<source>1</source>
+			<type>8</type>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="13" name="必填参数type不传">
+		<input_parameter>
+			<source>1</source>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="14" name="必填参数sign错误">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+			<sign>xxx</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="必填参数sign不传">
+		<input_parameter>
+			<source>1</source>
+			<type>1</type>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="16" name="接口返回的游戏详情与后台配置同步更新">
+		<input_parameter>
+			<source>1</source>
+			<id>xxx</id>
+			<type>game</type>
+			<sign>5764397dbc6774d42e65fd7875a667c6</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+</suite>

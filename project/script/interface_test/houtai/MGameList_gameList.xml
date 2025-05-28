@@ -1,0 +1,650 @@
+<?xml version="1.0" ?>
+<suite shelf="MGameList_gameList">
+	<url>
+		<url_name>MGameList_gameList</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/mixed/MGameList/gameList?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="仅传入必填参数source和sign，接口返回全部游戏列表">
+		<input_parameter>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必传参数source缺失，接口返回错误响应码:10001">
+		<input_parameter>
+			<sign>a9f499985eec6ac9cd162e2e9b509a02</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="3" name="必传参数source传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>201</source>
+			<sign>a128a0c624b20e4ee32da205b1f0b45d</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="4" name="必传参数sign缺失，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="5" name="必传参数sign错误，接口返回错误响应码:10002">
+		<input_parameter>
+			<source>1</source>
+			<sign>xx</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数network=1,接口仅返回网络游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<network>1</network>
+			<sign>60de5c8d25eff1606d3b9117714a55b3</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">1</network>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数network传入多个值,接口返回全部的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<network>1,2</network>
+			<sign>ca301798c54ddac6525eda58f5bf9b35</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<network test_type="all">$:1,2</network>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数network传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<network>0</network>
+			<sign>47eee132214d9dd64401b18f982426fb</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数terminal=1,接口仅返回终端为安卓的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<terminal>1</terminal>
+			<sign>ed99754f457cd6e6be39975e2cefa9ab</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">1</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="10" name="请求参数terminal传入多个值,接口返回指定终端的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<terminal>1,2</terminal>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<terminal test_type="all">$:1,2</terminal>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="11" name="请求参数terminal传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<sign>a9f499985eec6ac9cd162e2e9b509a02</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="12" name="请求参数publish_area=1,接口仅返回发行区域为大陆的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<publish_area>1</publish_area>
+			<sign>6dd7d83fdbbb063f387f7c79c8f91e1c</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<publish_area test_type="all">1</publish_area>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="13" name="请求参数publish_area传入多个值,接口多个发行区域的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<publish_area>1,4</publish_area>
+			<sign>fb359752589ded8a18e02fb0e0601483</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<publish_area test_type="all">$:1,4</publish_area>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="14" name="请求参数publish_area传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<publish_area>5</publish_area>
+			<sign>4600c862c0856faf0e180d5cbffd4c7b</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="15" name="请求参数category=1,接口仅返回休闲益智类游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<category>1</category>
+			<sign>070d3c7679a41eb7c64418f75c1ff9af</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category_name test_type="all">休闲益智</category_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="16" name="请求参数category传入多个值,接口返回多种游戏分类下的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<category>1,4</category>
+			<sign>759033104f7c3873caa9f3ee6175bac8</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<category_name test_type="all">$:休闲益智,棋牌对战</category_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="17" name="请求参数category传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<category>120</category>
+			<sign>ca4834f8ac69fb67a3a8e10c5baa23a0</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="18" name="请求参数pay_status=1,接口仅返回游戏充值状态开启的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<pay_status>1</pay_status>
+			<sign>9cab7ac1695f58391f2e7f4ebdb51faf</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<pay_status test_type="all">1</pay_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="19" name="请求参数pay_status传入多个值传入多个值,接口返回多种游戏充值状态下的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<pay_status>1,2</pay_status>
+			<page>1</page>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<pay_status test_type="all">$:1,2</pay_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="20" name="请求参数pay_status传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<pay_status>4</pay_status>
+			<sign>a65168b32e8d8fece1680424b72a8658</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="21" name="请求参数online_status=1,接口仅返回游戏上线状态为上线的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<online_status>1</online_status>
+			<sign>0bdd48f31c91632d5389251fae81f0de</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<online_status test_type="all">1</online_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="22" name="请求参数online_status传入多个值传入多个值,接口返回多种游戏上线状态下的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<online_status>1,2</online_status>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<online_status test_type="all">$:1,2</online_status>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="23" name="请求参数online_status传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<pay_status>8</pay_status>
+			<sign>e10c61a6edeed2ca3392b2bd9e6b219d</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="24" name="请求参数op_group=2,接口仅返回游戏运营组为棋牌游戏的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<op_group>2</op_group>
+			<sign>b2777343d9111238dde518c757c6f638</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<op_group test_type="all">2</op_group>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="25" name="请求参数op_group传入多个值传入多个值,接口返回多种游戏运营组下的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<op_group>2,3</op_group>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<op_group test_type="all">$:2,3</op_group>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="26" name="请求参数op_group传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<op_group>1</op_group>
+			<sign>31342c940b5dbc953284577e30e63beb</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="27" name="请求参数game_id非整型，接口返回错误响应码:10001  是的">
+		<input_parameter>
+			<source>1</source>
+			<game_id>xx,xx</game_id>
+			<sign>78c4b197481584ae4bdf2729364df342</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="28" name="请求参数传入单个game_id,接口仅返回指定的单个游戏信息">
+		<input_parameter>
+			<source>1</source>
+			<game_id>5900</game_id>
+			<sign>3abff83bee3ce8317dfc23b957ab0dd6</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>5900</game_id>
+				<qipu_id>212176620</qipu_id>
+				<game_name>三生三世十里桃花H5</game_name>
+				<network>1</network>
+				<terminal>6</terminal>
+				<brief>三生三世正版仙侠游戏！</brief>
+				<online_status>3</online_status>
+				<home_url>http://</home_url>
+				<logo>http://static.g.iqiyi.com/images/open/201704/59003c0dccaf0.jpg</logo>
+				<icon>https://static.g.iqiyi.com/images/open/201704/59003ba4425bb.png</icon>
+				<initial>S</initial>
+				<pay_status>2</pay_status>
+				<category_name>角色扮演</category_name>
+				<category_id>5</category_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="29" name="请求参数传入多个game_id,接口返回所指定的多个游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<game_id>5900,6288</game_id>
+			<sign>a334389416cf0bcb155d87fa6714d27a</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>6288</game_id>
+				<qipu_id>212415220</qipu_id>
+			</data>
+			<data>
+				<game_id>5900</game_id>
+				<qipu_id>212176620</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="30" name="请求参数传入单个qipu_id,接口仅返回指定的单个游戏信息">
+		<input_parameter>
+			<source>1</source>
+			<qipu_id>212415220</qipu_id>
+			<sign>74f87398c0ddc7eb5163367102746402</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>6288</game_id>
+				<qipu_id>212415220</qipu_id>
+				<game_name>口袋之旅H5</game_name>
+				<network>1</network>
+				<terminal>6</terminal>
+				<brief>高度还原GBA口袋妖怪手游力作！</brief>
+				<online_status>1</online_status>
+				<home_url>http://</home_url>
+				<category_id>13</category_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="31" name="请求参数传入多个qipu_id,接口返回所指定的多个游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<qipu_id>212415220,233100720</qipu_id>
+			<sign>b2aba94b8e02a0f40b462af6429fdf6f</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_id>6288</game_id>
+				<qipu_id>212415220</qipu_id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="32" name="请求参数qipu_id非整型，接口返回错误响应码:10001 ">
+		<input_parameter>
+			<source>1</source>
+			<game_id>xx,xx</game_id>
+			<sign>78c4b197481584ae4bdf2729364df342</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="33" name="请求参数传入filter=1，过滤海马玩数据为空的移动端游戏">
+		<input_parameter>
+			<source>1</source>
+			<filter>1</filter>
+			<sign>05029e512631dd79462913a282372fb3</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<filter test_type="all">1</filter>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="34" name="请求参数传入initial=A，接口返回游戏名称首字母为A的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<initial>A</initial>
+			<sign>30257adfe751bb8405bbd1babebd68be</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<initial test_type="all">A</initial>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="35" name="请求参数initial传入多个值，接口返回多个游戏名称首字母下的游戏列表">
+		<input_parameter>
+			<source>1</source>
+			<initial>A,B</initial>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<initial test_type="all">$:A,B</initial>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="36" name="请求参数initial非英文字母">
+		<input_parameter>
+			<source>1</source>
+			<initial>123,B</initial>
+			<sign>%{sign}</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="37" name="请求参数传入keyword,模糊搜索游戏名 (中英文都能输入  前后左右都匹配   中英文交叉不行)">
+		<input_parameter>
+			<source>1</source>
+			<keyword>SDK</keyword>
+			<sign>d0ddade397c0df4efd0c28bd24386e44</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_name test_type="all">%SDK%</game_name>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="38" name="请求参数不传入order_by&amp;sort,接口返回的游戏列表按game_id降序排列">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>game_id</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="39" name="请求参数传入order_by=game_id&amp;sort=desc,接口返回的游戏列表按ganme_id降序排列">
+		<input_parameter>
+			<source>1</source>
+			<order_by>game_id</order_by>
+			<sort>desc</sort>
+			<sign>cf2ec1b14ed0212cfd51bbd10bf9716c</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>game_id</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="40" name="请求参数传入order_by=game_id&amp;sort=asc,接口返回的游戏列表按game_id升序排列">
+		<input_parameter>
+			<source>1</source>
+			<order_by>game_id</order_by>
+			<sort>asc</sort>
+			<sign>b598c8aa382fa10aa48bef92485cbd5a</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>game_id</keyword>
+					<order>asc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="41" name="请求参数传入order_by=online_date&amp;sort=asc,接口返回的游戏列表按online_date升序排列">
+		<input_parameter>
+			<source>1</source>
+			<order_by>online_date</order_by>
+			<sort>asc</sort>
+			<sign>4997cec99f828db094cd360e6fcc351f</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>online_date</keyword>
+					<order>asc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="42" name="请求参数传入order_by=online_date&amp;sort=desc,接口返回的游戏列表按online_date降序排列">
+		<input_parameter>
+			<source>1</source>
+			<order_by>online_date</order_by>
+			<sort>desc</sort>
+			<sign>3ccc4d99facd351080e8960848c43839</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<check_sort_in_program test_type="check_sort">
+					<keyword>online_date</keyword>
+					<order>desc</order>
+				</check_sort_in_program>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="43" name="请求参数order_by传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<order_by>xx</order_by>
+			<sort>desc</sort>
+			<sign>8544b199e61d47040e02cc0d49a0da52</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="44" name="请求参数sort传入枚举值之外的值，接口返回错误响应码:10001">
+		<input_parameter>
+			<source>1</source>
+			<order_by>online_date</order_by>
+			<sort>xx</sort>
+			<sign>123f2d829c665ee43d7335029a950687</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="45" name="请求参数不传page&amp;page_size，接口返回游戏列表第1页，页面容量20">
+		<input_parameter>
+			<source>1</source>
+			<sign>d272ff7cf2a93655b2a5e54eb3f0fb33</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page test_type="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="46" name="请求参数传入page=2&amp;page_size=10，接口返回游戏列表第2页，页面容量20">
+		<input_parameter>
+			<source>1</source>
+			<page>2</page>
+			<page_size>10</page_size>
+			<sign>2e1cee9af30870279d6a5a258e78e8da</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<page test_type="all">2</page>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="47" name="page_size大于100，接口返回错误响应码：10001">
+		<input_parameter>
+			<source>1</source>
+			<page>1</page>
+			<page_size>101</page_size>
+			<sign>b79db20658b6f8277687ea5f35b82b81</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="48" name="请求参数page非整型，接口返回错误响应码：10001">
+		<input_parameter>
+			<source>1</source>
+			<page>abc</page>
+			<page_size>10</page_size>
+			<sign>5c3975420a6bd92e5cfdb4f9a7285c5c</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="49" name="请求参数page_size非整型，接口返回错误响应码：10001">
+		<input_parameter>
+			<source>1</source>
+			<page>1</page>
+			<page_size>abc</page_size>
+			<sign>8713ece32fa04cd648ccf15aadf8482d</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<!--<testcase id="50" name="请求参数keyword，sql注入">
+		<input_parameter>
+			<source>1</source>
+			<keyword>'A'</keyword>
+			<sign>%9161400859170bcf1486dc9afc9a6b1e</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+		</expect>
+	</testcase>-->
+	<testcase id="51" name="请求参数传入中文keyword,模糊搜索游戏名">
+		<input_parameter>
+			<source>1</source>
+			<keyword>游戏</keyword>
+			<sign>004df01fd6588bdbbf4f0d93c819526a</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<game_name test_type="all">%游戏%</game_name>
+			</data>
+		</expect>
+	</testcase>
+</suite>

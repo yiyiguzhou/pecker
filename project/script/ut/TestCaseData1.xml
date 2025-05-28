@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<data>
+    <paramater>
+        <username>test11</username>
+        <password>123456</password>
+        <username>test11</username>
+        <password>1234567</password>
+        <username>test22</username>
+        <password>1234568</password>
+        <looptimes>10</looptimes>
+    </paramater>
+</data>

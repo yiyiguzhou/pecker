@@ -1,0 +1,145 @@
+<?xml version="1.0" ?>
+<suite shelf="WServer_gameLatestServer">
+	<url>
+		<url_name>WServer_gameLatestServer</url_name>
+		<url_place>http://apisgame.qiyi.domain/product/web/WServer/gameLatestServer?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="1" name="必传参数type=game时，按游戏id查询最新服务器信息">
+		<input_parameter>
+			<type>game</type>
+			<id>4882</id>
+			<source>1</source>
+			<sign>c4f5e0dc08748f2da57f99aff46e97a4</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>23905771</id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="2" name="必传参数type=qipu时，按奇谱id查询最新服务器信息">
+		<input_parameter>
+			<type>qipu</type>
+			<id>210478920</id>
+			<source>1</source>
+			<sign>8b3c659568b64731d814d1fefa338f41</sign>
+		</input_parameter>
+		<expect>
+			<code>200</code>
+			<data>
+				<id>23905771</id>
+			</data>
+		</expect>
+	</testcase>
+	<testcase id="5" name="必传参数type传入枚举值之外的值，请接口返回错误响应码:10001">
+		<input_parameter>
+			<type>qi</type>
+			<id>210478920</id>
+			<source>1</source>
+			<sign>07600627f9314a4fd9e0256a2cdd1485</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="按奇谱id查询最新服务器时，必传参数奇谱id缺失，接口返回错误响应码:10001">
+		<input_parameter>
+			<type>qipu</type>
+			<source>1</source>
+			<sign>7fea147fde787e9609021ab9067c5feb</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="None" name="按奇谱id查询最新服务器时，必传参数奇谱id非整型，接口返回错误响应码:10001">
+		<input_parameter>
+			<type>qipu</type>
+			<id>a</id>
+			<source>1</source>
+			<sign>1349ddadeeb5c7856c6422c9004f6e5c</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="None" name="按奇谱id查询最新服务器时，必传参数奇谱id不存在，接口返回错误响应码:50002">
+		<input_parameter>
+			<type>qipu</type>
+			<id>210478921</id>
+			<source>1</source>
+			<sign>42486b304239a4cd67b7b06a37df7a0a</sign>
+		</input_parameter>
+		<expect>
+			<code>50002</code>
+		</expect>
+	</testcase>
+	<testcase id="10" name="按游戏id查询最新服务器时，必传参数游戏id缺失，接口返回错误响应码:10001">
+		<input_parameter>
+			<type>game</type>
+			<source>1</source>
+			<sign>3078f6b4d64cfc09cb34a5caf9b9f9a9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="None" name="按游戏id查询最新服务器时，必传参数游戏id非整型，接口返回错误响应码:10001">
+		<input_parameter>
+			<type>game</type>
+			<id>a</id>
+			<source>1</source>
+			<sign>7fac6bc8b71590832ae1b5f9f571a8de</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="None" name="按游戏id查询最新服务器时，必传参数游戏id不存在，接口返回错误响应码:50102">
+		<input_parameter>
+			<type>game</type>
+			<id>12345</id>
+			<source>1</source>
+			<sign>869be99eee2055449135c9bd183dddc6</sign>
+		</input_parameter>
+		<expect>
+			<code>50102</code>
+		</expect>
+	</testcase>
+	<testcase id="6" name="请求参数source缺失，接口返回错误响应码">
+		<input_parameter>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="7" name="请求参数source传入枚举值之外的值，接口返回错误响应码">
+		<input_parameter>
+			<source>28</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="8" name="请求参数sign缺失，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+		</input_parameter>
+		<expect>
+			<code>10001</code>
+		</expect>
+	</testcase>
+	<testcase id="9" name="请求参数sign错误，接口返回错误响应码">
+		<input_parameter>
+			<source>1</source>
+			<sign>e98a33aeb62e10d800e22f443c1e07f9</sign>
+		</input_parameter>
+		<expect>
+			<code>10002</code>
+		</expect>
+	</testcase>
+</suite>

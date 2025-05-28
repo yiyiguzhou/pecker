@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<suite shelf="center_catehot">
+	<url>
+		<url_name>center_catehot</url_name>
+		<url_place>http://production.game.qiyi.domain/api/center/catehot?</url_place>
+		<response_method>GET</response_method>
+	</url>
+	<testcase id="6" name="传入limit和page验证">
+		<input_parameter>
+			<fr>6</fr>
+			<category>1</category>
+			<limit>50</limit>
+			<page>1</page>
+		</input_parameter>
+		<expect>
+			<status>0</status>
+			<data>
+				<limit test_type="all">1</limit>
+				<page test_type="all">1</page>
+			</data>
+		</expect>
+	</testcase>
+</suite>

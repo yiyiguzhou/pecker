@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<devices name='device'>
+	<parameter>
+	    <report_up_http>false</report_up_http>
+	    <server_localhost>10.5.170.105</server_localhost>
+	    <http_server_port>8080</http_server_port>
+	    <ftp_user>ftptest</ftp_user>
+	    <ftp_passwd>ftptest</ftp_passwd>
+	    <ftp_base_path>/auto/http_server</ftp_base_path>
+	</parameter>
+	<environment>
+	    <type>sdk_daily_build</type>
+	</environment>
+	<device>
+        <DUT>
+            <type>android</type>
+            <lib>lib/sdk/android/mainland</lib>
+            <id></id>
+            <name></name>
+            <app_package>com.iqiyigame.sdk.demo</app_package>
+            <app_activity>com.iqiyigame.sdk.demo.MainActivity</app_activity>
+            <command_timeout>600</command_timeout>
+            <no_reset>true</no_reset>
+            <catch_performance>true</catch_performance>
+            <catch_performance_app>com.iqiyigame.sdk.demo</catch_performance_app>
+            <performance_time_interval>1</performance_time_interval>
+        </DUT>
+    </device>
+</devices>
